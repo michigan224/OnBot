@@ -34,7 +34,7 @@ async def on_message(message):
   
     author = message.author.mention
     members = message.channel.members
-    messageOut += ('Ok %s you dumb fuck. Since it\'s so hard to look yourself i\'ll look for you'%(author))
+    messageOut += ('Ok %s. Since it\'s so hard to look yourself i\'ll look for you'%(author))
     memids = []
     off = []
     for member in members:
@@ -68,10 +68,10 @@ async def on_message(message):
               sURL = act.url
           if game and spot:
             if gName == 'Rocket League':
-              messageOut += ('\n%s is listening to %s while playing fucking Rocket'%(member.name, song))
+              messageOut += ('\n%s is listening to %s while playing Rocket'%(member.name, song))
 
             elif gName == 'Fortnite':
-              messageOut += ('\n%s is listening to %s while playing Fartnuts'%(member.name, song))
+              messageOut += ('\n%s is listening to %s while playing Fornite'%(member.name, song))
             else:
               messageOut += ('\n%s is listening to %s while playing %s'%(member.name, song, gName))
             messageOut += ('\nYou can listen here: https://open.spotify.com/track/%s'%(songID))
@@ -86,13 +86,13 @@ async def on_message(message):
           elif stream:
             messageOut += ('\n%s is streaming %s at %s'%(sName, sGame, sURL))
           else:
-            messageOut += ('\n%s is online but aint doing shit'%(member.name))
+            messageOut += ('\n%s is online but isn\'t doing anything'%(member.name))
         elif member.status == discord.Status.idle:
-          messageOut += ('\n%s is fucking idle like a bitch. Either get on or get off, jesus.'%(member.name))
+          messageOut += ('\n%s is idle like a loser. Either get on or get off, jesus.'%(member.name))
         elif member.status == discord.Status.dnd:
-          messageOut += ('\n%s doesn\'t want to be fucking disturbed.'%(member.name))
+          messageOut += ('\n%s doesn\'t want to be disturbed.'%(member.name))
         elif member.status == discord.Status.invisible:
-          messageOut += ('\n%s is invisible. They\'re probably jerking off'%(member.name))
+          messageOut += ('\n%s is invisible. They\'re probably watching TV'%(member.name))
         else:
           off.append(member.name)
     await message.channel.send(messageOut)
