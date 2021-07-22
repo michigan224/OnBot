@@ -14,4 +14,4 @@ Any use of both words ```who``` and ```on``` in the same message to see who is o
 
 ```get requests``` to list all current requests.
 
-This project was built using the [Discord Python API](https://discordpy.readthedocs.io/en/latest/api.html#member) and [this](https://www.youtube.com/watch?v=SPTfmiYiuok) from [freeCodeCamp.org](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ) on youtube.
+This project was built using the [Discord Python API](https://discordpy.readthedocs.io/en/latest/api.html#member) and [this](https://www.youtube.com/watch?v=SPTfmiYiuok) video from [freeCodeCamp.org](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ) on youtube.
