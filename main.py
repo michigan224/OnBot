@@ -1,16 +1,9 @@
 import discord
-from discord import FFmpegPCMAudio
-from discord import ChannelType
-from discord.ext import commands
 import spotipy
-from PIL import Image
-import requests
-from io import BytesIO
 from spotipy.oauth2 import SpotifyClientCredentials
 import os
 from keep_alive import keep_alive
 from replit import db
-import time
 
 SPOTIPY_CLIENT_ID=os.environ['SPOTIPY_CLIENT_ID']
 SPOTIPY_CLIENT_SECRET=os.environ['SPOTIPY_CLIENT_SECRET']
@@ -26,12 +19,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  server = discord.utils.get(client.guilds, id=641507713733623829)  # your server's ID
   if message.author == client.user:
     return
   messageOut = ''
   if ('who' in message.clean_content.lower() and 'on' in message.clean_content.lower()):
-  
     author = message.author.mention
     members = message.channel.members
     messageOut += ('Ok %s. Since it\'s so hard to look yourself i\'ll look for you'%(author))
@@ -50,18 +41,18 @@ async def on_message(message):
           memids.append(member.id)
           activities = member.activities
           for act in activities:
-            if type(act) == discord.activity.Spotify:
+            if isinstance(act, discord.activity.Spotify):
               spot = True
               song = act.title
               songID = act.track_id
               album = act.album
-            if type(act) == discord.activity.Activity:
+            if isinstance(act, discord.activity.Activity):
               game = True
               gName = act.name
-            if type(act) == discord.activity.Game:
+            if isinstance(act, discord.activity.Game):
               game = True
               gName = act.name
-            if type(act) == discord.activity.Streaming:
+            if isinstance(act, discord.activity.Streaming):
               stream = True
               sName = act.twitch_name
               sGame = act.game
@@ -195,9 +186,9 @@ def getLink(album, songID):
   # get the first album uri
   albumID = results['albums']['items'][0]['uri']
   albumID = albumID[14:]
-  format = 'https://open.spotify.com/album/%s?highlight=spotify:track:%s'%(albumID, songID)
-  print(format)
-  return format
+  form = 'https://open.spotify.com/album/%s?highlight=spotify:track:%s'%(albumID, songID)
+  print(form)
+  return form
 
 
 def getDrops():
