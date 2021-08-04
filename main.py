@@ -25,7 +25,6 @@ async def on_message(message):
     print(message)
     if message.author == client.user:
         return
-    messageOut = ''
     if ('who' in message.clean_content.lower() and 'on' in message.clean_content.lower()):
         whosOn(message)
     if 'more like' in message.clean_content.lower():
@@ -81,7 +80,6 @@ async def whosOn(message):
         stream = False
         song = ''
         songID = ''
-        album = ''
         gName = ''
         if not member.bot and member != message.author:
             if member.status == discord.Status.online:
@@ -92,7 +90,6 @@ async def whosOn(message):
                         spot = True
                         song = act.title
                         songID = act.track_id
-                        album = act.album
                     if isinstance(act, discord.activity.Activity):
                         game = True
                         gName = act.name
