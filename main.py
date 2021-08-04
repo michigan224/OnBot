@@ -41,17 +41,16 @@ async def on_message(message):
         delRequest(req)
         await message.channel.send("%s was removed from requests. I guess David decided to add it." % (req))
         await message.delete()
-    elif 'get requests' in message.clean_content.lower():
-        if "requests" in db.keys() and len(db["requests"]) > 0:
-            requests = db["requests"]
-            count = 1
-            for req in requests:
-                await message.channel.send('%i. %s' % (count, req))
-                count += 1
-
-        else:
-            await message.channel.send('There are currently no requests.')
-        await message.delete()
+    # elif 'get requests' in message.clean_content.lower():
+    #     if "requests" in db.keys() and len(db["requests"]) > 0:
+    #         requests = db["requests"]
+    #         count = 1
+    #         for req in requests:
+    #             await message.channel.send('%i. %s' % (count, req))
+    #             count += 1
+    #     else:
+    #         await message.channel.send('There are currently no requests.')
+    #     await message.delete()
     elif 'request' in message.clean_content.lower():
         req = message.clean_content.replace('request ', '')
         req = req.replace('Request ', '')
@@ -72,7 +71,8 @@ async def on_message(message):
 async def whosOn(message):
     author = message.author.mention
     members = message.channel.members
-    messageOut += ('Ok %s. Since it\'s so hard to look yourself i\'ll look for you' % (author))
+    messageOut = (
+        'Ok %s. Since it\'s so hard to look yourself i\'ll look for you' % (author))
     memids = []
     off = []
     for member in members:
@@ -152,23 +152,25 @@ async def whosOn(message):
 
 
 def addRequest(req):
-    if "requests" in db.keys():
-        requests = db["requests"]
-        requests.append(req)
-        db["requests"] = requests
-    else:
-        db["requests"] = [req]
+    # if "requests" in db.keys():
+    #     requests = db["requests"]
+    #     requests.append(req)
+    #     db["requests"] = requests
+    # else:
+    #     db["requests"] = [req]
+    return
 
 
 def delRequest(reqe):
-    requests = db["requests"]
-    ind = 0
-    for req in requests:
-        if req == reqe:
-            del requests[ind]
-            db["requests"] = requests
-            return
-        ind += 1
+    # requests = db["requests"]
+    # ind = 0
+    # for req in requests:
+    #     if req == reqe:
+    #         del requests[ind]
+    #         db["requests"] = requests
+    #         return
+    #     ind += 1
+    return
 
 
 def moreLike(playlistID):
