@@ -4,11 +4,20 @@ from keep_alive import keep_alive
 import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+from imdb import IMDb
+from pycliarr.api import RadarrCli, SonarrCli
+import tvdb_api
+
+# t = tvdb_api.Tvdb()
+# t = tvdb_api(apikey="ENTER YOUR API KEY HERE")
 
 load_dotenv()
+ia = IMDb()
 
 SPOTIPY_CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID')
 SPOTIPY_CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET')
+radarr_cli = RadarrCli('http://192.168.4.63:7878', os.getenv('RADARR_API_KEY'))
+sonarr_cli = SonarrCli('http://192.168.4.63:8989', os.getenv('SONARR_API_KEY'))
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
@@ -22,11 +31,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    print(message)
     if message.author == client.user:
         return
     if ('who' in message.clean_content.lower() and 'on' in message.clean_content.lower()):
-        whosOn(message)
+        await whosOn(message)
     if 'more like' in message.clean_content.lower():
         playlist = message.clean_content.replace('more like ', '')
         await message.channel.send('If you liked songs from %s, then you might also like these:' % (playlist))
@@ -50,12 +58,12 @@ async def on_message(message):
     #     else:
     #         await message.channel.send('There are currently no requests.')
     #     await message.delete()
-    elif 'request' in message.clean_content.lower():
-        req = message.clean_content.replace('request ', '')
-        req = req.replace('Request ', '')
-        addRequest(req)
-        await message.channel.send("%s was added to the requests by %s. Im sure David will get on that ASAP." % (req, message.author.mention))
-        await message.delete()
+    elif 'request movie' in message.clean_content.lower():
+        req = message.clean_content.replace('request movie ', '')
+        await requestMovie(req, message)
+        # addRequest(req)
+        # await message.channel.send("%s was added to the requests by %s. Im sure David will get on that ASAP." % (req, message.author.mention))
+        # await message.delete()
     if 'geomap' in message.clean_content.lower():
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
         await message.delete()
@@ -148,6 +156,67 @@ async def whosOn(message):
     return
 
 
+async def requestMovie(req, message):
+    if isinstance(req, int):
+        movie = ia.get_movie(req)
+    else:
+        movies = ia.search_movie(req)
+        temp = []
+        for el in movies:
+            if(el.data['kind'] == 'movie'):
+                temp.append(el)
+        movies = temp[:3]
+        movieTitles = [el.data['title'] for el in movies]
+        movieIDs = [el.movieID for el in movies]
+
+    if not movies and not movie:
+        await message.channel.send('Could not find the given movie. Check [imdb](https://www.imdb.com/)')
+        return
+
+    # embed = discord.Embed(title='Please react with the correct one',
+    #                       description=f'1. {movieTitles[0]}\n' +
+    #                       f'2. {movieTitles[1]}\n' +
+    #                       f'3. {movieTitles[2]}\n')
+    embed = discord.Embed(title='Please react with the correct one')
+    embed.add_field(
+        name=f'1️⃣ {movieTitles[0]}', value=f'[Check if it\'s correct](https://www.imdb.com/title/tt{movieIDs[0]}/)')
+    if len(movies) > 1:
+        embed.add_field(
+            name=f'2️⃣ {movieTitles[1]}', value=f'[Check if it\'s correct](https://www.imdb.com/title/tt{movieIDs[1]}/)')
+    if len(movies) > 2:
+        embed.add_field(
+            name=f'3️⃣ {movieTitles[2]}', value=f'[Check if it\'s correct](https://www.imdb.com/title/tt{movieIDs[2]}/)')
+    embed.add_field(name='If you can\'t find what you\'re looking for. Try again with the ID from,',
+                    value='[imdb](https://www.imdb.com/)', inline=False)
+    embed.set_thumbnail(url=movies[0].data['cover url'])
+
+    mess1 = await message.channel.send(embed=embed)
+    await mess1.add_reaction('1️⃣')
+    if len(movies) > 1:
+        await mess1.add_reaction('2️⃣')
+    if len(movies) > 2:
+        await mess1.add_reaction('3️⃣')
+
+    def check(reaction, user):
+        return reaction.message.id == mess1.id and (str(reaction.emoji) == '1️⃣' or str(reaction.emoji) == '2️⃣' or str(reaction.emoji) == '3️⃣') and user == message.author
+
+    reaction = await client.wait_for('reaction_add', check=check)
+    if reaction[0].emoji == '1️⃣':
+        movie = movies[0]
+    elif reaction[0].emoji == '2️⃣':
+        movie = movies[1]
+    elif reaction[0].emoji == '3️⃣':
+        movie = movies[2]
+
+    try:
+        radarr_cli.add_movie(imdb_id=movie.movieID, quality=1)
+        await message.channel.send(f'{movie} was successfully added. It should be downloaded and imported soon!')
+        return
+    except Exception as e:
+        await message.channel.send('Movie already on Plex. If not ask David idk gosh man')
+        return
+
+
 def addRequest(req):
     # if "requests" in db.keys():
     #     requests = db["requests"]
@@ -225,5 +294,5 @@ def getDrops():
     return drops
 
 
-keep_alive()
+# keep_alive()
 client.run(os.getenv('TOKEN'))
