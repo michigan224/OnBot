@@ -6,10 +6,9 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from imdb import IMDb
 from pycliarr.api import RadarrCli, SonarrCli
-import tvdb_api
-
-# t = tvdb_api.Tvdb()
-# t = tvdb_api(apikey="ENTER YOUR API KEY HERE")
+import mariadb
+from datetime import date
+import json
 
 load_dotenv()
 ia = IMDb()
@@ -157,6 +156,20 @@ async def whosOn(message):
 
 
 async def requestMovie(req, message):
+    conn = mariadb.connect(
+        user=os.getenv('MARIA_DB_USER'),
+        password=os.getenv('MARIA_DB_PASS'),
+        host="192.168.4.63",
+        port=3306,
+        database="tron_db"
+    )
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO Requests (Movies,Series,Requested) VALUES (?, ?, ?)", (req, "", message.author.name))
+    conn.commit()
+    conn.close()
+    movie = ''
+    movies = []
     if isinstance(req, int):
         movie = ia.get_movie(req)
     else:
@@ -165,7 +178,7 @@ async def requestMovie(req, message):
         for el in movies:
             if(el.data['kind'] == 'movie'):
                 temp.append(el)
-        movies = temp[:3]
+        movies = temp[:10]
         movieTitles = [el.data['title'] for el in movies]
         movieIDs = [el.movieID for el in movies]
 
@@ -173,46 +186,55 @@ async def requestMovie(req, message):
         await message.channel.send('Could not find the given movie. Check [imdb](https://www.imdb.com/)')
         return
 
-    # embed = discord.Embed(title='Please react with the correct one',
-    #                       description=f'1. {movieTitles[0]}\n' +
-    #                       f'2. {movieTitles[1]}\n' +
-    #                       f'3. {movieTitles[2]}\n')
     embed = discord.Embed(title='Please react with the correct one')
-    embed.add_field(
-        name=f'1️⃣ {movieTitles[0]}', value=f'[Check if it\'s correct](https://www.imdb.com/title/tt{movieIDs[0]}/)')
-    if len(movies) > 1:
+    emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣',
+              '7️⃣', '8️⃣', '9️⃣', '🔟', '❌']
+    for i in range(len(movies)):
         embed.add_field(
-            name=f'2️⃣ {movieTitles[1]}', value=f'[Check if it\'s correct](https://www.imdb.com/title/tt{movieIDs[1]}/)')
-    if len(movies) > 2:
-        embed.add_field(
-            name=f'3️⃣ {movieTitles[2]}', value=f'[Check if it\'s correct](https://www.imdb.com/title/tt{movieIDs[2]}/)')
-    embed.add_field(name='If you can\'t find what you\'re looking for. Try again with the ID from,',
+            name=emojis[i], value=f'[{movieTitles[i]}](https://www.imdb.com/title/tt{movieIDs[i]}/)')
+
+    embed.add_field(name='If you can\'t find what you\'re looking for click the X and Try again with the ID from,',
                     value='[imdb](https://www.imdb.com/)', inline=False)
     embed.set_thumbnail(url=movies[0].data['cover url'])
 
     mess1 = await message.channel.send(embed=embed)
-    await mess1.add_reaction('1️⃣')
-    if len(movies) > 1:
-        await mess1.add_reaction('2️⃣')
-    if len(movies) > 2:
-        await mess1.add_reaction('3️⃣')
+    for i in range(len(movies)):
+        await mess1.add_reaction(emojis[i])
+
+    await mess1.add_reaction('❌')
 
     def check(reaction, user):
-        return reaction.message.id == mess1.id and (str(reaction.emoji) == '1️⃣' or str(reaction.emoji) == '2️⃣' or str(reaction.emoji) == '3️⃣') and user == message.author
+        return reaction.message.id == mess1.id and (emojis.index(reaction.emoji) != -1) and user == message.author
 
     reaction = await client.wait_for('reaction_add', check=check)
-    if reaction[0].emoji == '1️⃣':
-        movie = movies[0]
-    elif reaction[0].emoji == '2️⃣':
-        movie = movies[1]
-    elif reaction[0].emoji == '3️⃣':
-        movie = movies[2]
+    if reaction[0].emoji == '❌':
+        await message.channel.send('Please be more descriptive or try with the IMDB ID')
+        return
+    movie = movies[emojis.index(reaction[0].emoji)]
+    metadata = radarr_cli.lookup_movie(imdb_id=movie.movieID)._data
+    metadata = json.dumps(metadata, indent=4)
+    d = date.today()
+    auth = message.author.name
 
     try:
-        radarr_cli.add_movie(imdb_id=movie.movieID, quality=1)
+        await radarr_cli.add_movie(imdb_id=movie.movieID, quality=4)
         await message.channel.send(f'{movie} was successfully added. It should be downloaded and imported soon!')
+        conn = mariadb.connect(
+            user=os.getenv('MARIA_DB_USER'),
+            password=os.getenv('MARIA_DB_PASS'),
+            host="192.168.4.63",
+            port=3306,
+            database="tron_db"
+        )
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO Movies (metadata,requested,date) VALUES (?, ?, ?)",
+            (metadata, auth, d))
+        conn.commit()
+        conn.close()
         return
     except Exception as e:
+        print(e)
         await message.channel.send('Movie already on Plex. If not ask David idk gosh man')
         return
 
