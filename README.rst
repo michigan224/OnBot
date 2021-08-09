@@ -4,6 +4,9 @@ OnBot
   I would see the message 'who's on?' from someone. It does have that functionality now and will respond with a helpful,
   although slightly rude, message informing the asker who is on and what they are doing. Although the bots main purpose
   is still this, my friends and I have been able to come up with additional functionality.
+  
+| Added the ability for my friend to check the status of his car that he ordered. Uses a GET request to fetch the status
+  then displays in a simple manner.
 
 | I built a `NAS <https://en.wikipedia.org/wiki/Network-attached_storage>`_ that runs `Unraid <https://unraid.net/>`_ \
   which I use to store files and run dockers or VMs. I use an application called `Plex <https://www.plex.tv/>`_ to host movies that I own or
@@ -17,6 +20,8 @@ OnBot
 Commands
 --------
 | Any use of both words ``who`` and ``on`` in the same message to see who is on
+
+| ``whip`` gets the status of the car
 
 | The bot is also able to add requests for my Plex server using:
 | ``request movie <IMDb ID or keyword>`` to make a movie request
