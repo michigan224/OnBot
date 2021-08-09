@@ -1,6 +1,5 @@
 import discord
 from dotenv import load_dotenv
-from keep_alive import keep_alive
 import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -39,30 +38,9 @@ async def on_message(message):
         await message.channel.send('If you liked songs from %s, then you might also like these:' % (playlist))
         for el in moreLike(playlist):  # , name):
             await message.channel.send(el)
-    if 'delete request' in message.clean_content.lower():
-        req = message.clean_content.replace('delete request ', '')
-        req = req.replace('Delete request ', '')
-        req = req.replace('delete Request ', '')
-        req = req.replace('Delete Request ', '')
-        delRequest(req)
-        await message.channel.send("%s was removed from requests. I guess David decided to add it." % (req))
-        await message.delete()
-    # elif 'get requests' in message.clean_content.lower():
-    #     if "requests" in db.keys() and len(db["requests"]) > 0:
-    #         requests = db["requests"]
-    #         count = 1
-    #         for req in requests:
-    #             await message.channel.send('%i. %s' % (count, req))
-    #             count += 1
-    #     else:
-    #         await message.channel.send('There are currently no requests.')
-    #     await message.delete()
     elif 'request movie' in message.clean_content.lower():
         req = message.clean_content.replace('request movie ', '')
         await requestMovie(req, message)
-        # addRequest(req)
-        # await message.channel.send("%s was added to the requests by %s. Im sure David will get on that ASAP." % (req, message.author.mention))
-        # await message.delete()
     if 'geomap' in message.clean_content.lower():
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
         await message.delete()
@@ -150,6 +128,10 @@ async def whosOn(message):
                                (member.name))
             else:
                 off.append(member.name)
+    if messageOut == 'Ok %s. Since it\'s so hard to look yourself i\'ll look for you' % (author):
+        await message.channel.send(messageOut + '\nLooks like no one is on. You\'re going to have to play alone.')
+        await message.delete()
+        return
     await message.channel.send(messageOut)
     await message.delete()
     return
@@ -172,6 +154,32 @@ async def requestMovie(req, message):
     movies = []
     if isinstance(req, int):
         movie = ia.get_movie(req)
+        metadata = radarr_cli.lookup_movie(imdb_id=req)._data
+        metadata = json.dumps(metadata, indent=4)
+        d = date.today()
+        auth = message.author.name
+
+        try:
+            await radarr_cli.add_movie(imdb_id=req, quality=4)
+            await message.channel.send(f'{movie} was successfully added. It should be downloaded and imported soon!')
+            conn = mariadb.connect(
+                user=os.getenv('MARIA_DB_USER'),
+                password=os.getenv('MARIA_DB_PASS'),
+                host="192.168.4.63",
+                port=3306,
+                database="tron_db"
+            )
+            cursor = conn.cursor()
+            cursor.execute(
+                "INSERT INTO Movies (metadata,requested,date) VALUES (?, ?, ?)",
+                (metadata, auth, d))
+            conn.commit()
+            conn.close()
+            return
+        except Exception as e:
+            print(e)
+            await message.channel.send('Movie already on Plex. If not ask David idk gosh man')
+            return
     else:
         movies = ia.search_movie(req)
         temp = []
@@ -182,83 +190,61 @@ async def requestMovie(req, message):
         movieTitles = [el.data['title'] for el in movies]
         movieIDs = [el.movieID for el in movies]
 
-    if not movies and not movie:
-        await message.channel.send('Could not find the given movie. Check [imdb](https://www.imdb.com/)')
-        return
+        if not movies and not movie:
+            await message.channel.send('Could not find the given movie. Check [imdb](https://www.imdb.com/)')
+            return
 
-    embed = discord.Embed(title='Please react with the correct one')
-    emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣',
-              '7️⃣', '8️⃣', '9️⃣', '🔟', '❌']
-    for i in range(len(movies)):
-        embed.add_field(
-            name=emojis[i], value=f'[{movieTitles[i]}](https://www.imdb.com/title/tt{movieIDs[i]}/)')
+        embed = discord.Embed(title='Please react with the correct one')
+        emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣',
+                  '7️⃣', '8️⃣', '9️⃣', '🔟', '❌']
+        for i in range(len(movies)):
+            embed.add_field(
+                name=emojis[i], value=f'[{movieTitles[i]}](https://www.imdb.com/title/tt{movieIDs[i]}/)')
 
-    embed.add_field(name='If you can\'t find what you\'re looking for click the X and Try again with the ID from,',
-                    value='[imdb](https://www.imdb.com/)', inline=False)
-    embed.set_thumbnail(url=movies[0].data['cover url'])
+        embed.add_field(name='If you can\'t find what you\'re looking for click the X and Try again with the ID from,',
+                        value='[imdb](https://www.imdb.com/)', inline=False)
+        embed.set_thumbnail(url=movies[0].data['cover url'])
 
-    mess1 = await message.channel.send(embed=embed)
-    for i in range(len(movies)):
-        await mess1.add_reaction(emojis[i])
+        mess1 = await message.channel.send(embed=embed)
+        for i in range(len(movies)):
+            await mess1.add_reaction(emojis[i])
 
-    await mess1.add_reaction('❌')
+        await mess1.add_reaction('❌')
 
-    def check(reaction, user):
-        return reaction.message.id == mess1.id and (emojis.index(reaction.emoji) != -1) and user == message.author
+        def check(reaction, user):
+            return reaction.message.id == mess1.id and (emojis.index(reaction.emoji) != -1) and user == message.author
 
-    reaction = await client.wait_for('reaction_add', check=check)
-    if reaction[0].emoji == '❌':
-        await message.channel.send('Please be more descriptive or try with the IMDB ID')
-        return
-    movie = movies[emojis.index(reaction[0].emoji)]
-    metadata = radarr_cli.lookup_movie(imdb_id=movie.movieID)._data
-    metadata = json.dumps(metadata, indent=4)
-    d = date.today()
-    auth = message.author.name
+        reaction = await client.wait_for('reaction_add', check=check)
+        if reaction[0].emoji == '❌':
+            await message.channel.send('Please be more descriptive or try with the IMDB ID')
+            return
+        movie = movies[emojis.index(reaction[0].emoji)]
+        metadata = radarr_cli.lookup_movie(imdb_id=movie.movieID)._data
+        metadata = json.dumps(metadata, indent=4)
+        d = date.today()
+        auth = message.author.name
 
-    try:
-        await radarr_cli.add_movie(imdb_id=movie.movieID, quality=4)
-        await message.channel.send(f'{movie} was successfully added. It should be downloaded and imported soon!')
-        conn = mariadb.connect(
-            user=os.getenv('MARIA_DB_USER'),
-            password=os.getenv('MARIA_DB_PASS'),
-            host="192.168.4.63",
-            port=3306,
-            database="tron_db"
-        )
-        cursor = conn.cursor()
-        cursor.execute(
-            "INSERT INTO Movies (metadata,requested,date) VALUES (?, ?, ?)",
-            (metadata, auth, d))
-        conn.commit()
-        conn.close()
-        return
-    except Exception as e:
-        print(e)
-        await message.channel.send('Movie already on Plex. If not ask David idk gosh man')
-        return
-
-
-def addRequest(req):
-    # if "requests" in db.keys():
-    #     requests = db["requests"]
-    #     requests.append(req)
-    #     db["requests"] = requests
-    # else:
-    #     db["requests"] = [req]
-    return
-
-
-def delRequest(reqe):
-    # requests = db["requests"]
-    # ind = 0
-    # for req in requests:
-    #     if req == reqe:
-    #         del requests[ind]
-    #         db["requests"] = requests
-    #         return
-    #     ind += 1
-    return
+        try:
+            await radarr_cli.add_movie(imdb_id=movie.movieID, quality=4)
+            await message.channel.send(f'{movie} was successfully added. It should be downloaded and imported soon!')
+            conn = mariadb.connect(
+                user=os.getenv('MARIA_DB_USER'),
+                password=os.getenv('MARIA_DB_PASS'),
+                host="192.168.4.63",
+                port=3306,
+                database="tron_db"
+            )
+            cursor = conn.cursor()
+            cursor.execute(
+                "INSERT INTO Movies (metadata,requested,date) VALUES (?, ?, ?)",
+                (metadata, auth, d))
+            conn.commit()
+            conn.close()
+            return
+        except Exception as e:
+            print(e)
+            await message.channel.send('Movie already on Plex. If not ask David idk gosh man')
+            return
 
 
 def moreLike(playlistID):
@@ -316,5 +302,4 @@ def getDrops():
     return drops
 
 
-# keep_alive()
 client.run(os.getenv('TOKEN'))
