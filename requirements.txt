@@ -5,3 +5,4 @@ spotipy==2.18.0
 imdbpy==2021.4.18
 pycliarr==1.0.14
 mariadb==1.0.7
+requests==2.25.1

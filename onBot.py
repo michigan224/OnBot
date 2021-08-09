@@ -6,8 +6,9 @@ from spotipy.oauth2 import SpotifyClientCredentials
 from imdb import IMDb
 from pycliarr.api import RadarrCli, SonarrCli
 import mariadb
-from datetime import date
+from datetime import date, datetime
 import json
+import requests
 
 load_dotenv()
 ia = IMDb()
@@ -33,7 +34,7 @@ async def on_message(message):
         return
     if ('who' in message.clean_content.lower() and 'on' in message.clean_content.lower()):
         await whosOn(message)
-    if 'more like' in message.clean_content.lower():
+    elif 'more like' in message.clean_content.lower():
         playlist = message.clean_content.replace('more like ', '')
         await message.channel.send('If you liked songs from %s, then you might also like these:' % (playlist))
         for el in moreLike(playlist):  # , name):
@@ -41,15 +42,17 @@ async def on_message(message):
     elif 'request movie' in message.clean_content.lower():
         req = message.clean_content.replace('request movie ', '')
         await requestMovie(req, message)
-    if 'geomap' in message.clean_content.lower():
+    elif 'geomap' in message.clean_content.lower():
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
         await message.delete()
-    if 'newdrops' in message.clean_content.lower():
+    elif 'newdrops' in message.clean_content.lower():
         drops = getDrops()
         for artist, song in drops:
             print('%s most recent drop is %s' % (artist, song))
             await message.channel.send('%s most recent drop is %s' % (artist, song))
         await message.delete()
+    elif 'whip' == message.clean_content.lower():
+        await getCarETA(message)
 
 
 async def whosOn(message):
@@ -245,6 +248,33 @@ async def requestMovie(req, message):
             print(e)
             await message.channel.send('Movie already on Plex. If not ask David idk gosh man')
             return
+
+
+async def getCarETA(message):
+    vin = os.getenv('VIN')
+    orderNum = os.getenv('ORDER_NUMBER')
+    url = 'https://shop.ford.com/aemservices/shop/vot/api/customerorder/?orderNumber=' + \
+        orderNum + '&partAttributes=BP2_.*&vin=' + vin
+    r = requests.get(url)
+    r = r.json()[0]
+    etaStartDate = r['etaStartDate']
+    y, m, d = etaStartDate.split('-')
+    etaStartDate = datetime(int(y), int(m), int(d))
+    etaEndDate = r['etaEndDate']
+    y, m, d = etaEndDate.split('-')
+    etaEndDate = datetime(int(y), int(m), int(d))
+    currDate = datetime.today().strftime('%Y-%m-%d')
+    y, m, d = currDate.split('-')
+    currDate = datetime(int(y), int(m), int(d))
+
+    if etaStartDate > currDate and etaEndDate > currDate:
+        e = discord.Embed(title="2021 Ranger XLT",
+                          description="Estimated delivery date: **" + r['etaStartDate'] + ' - ' + r['etaEndDate'] + "**")
+    else:
+        e = discord.Embed(title="2021 Ranger XLT",
+                          description="Estimated delivery date not available.\nVehicle Status: **" + r['primaryStatus'] + "**")
+    e.set_image(url=os.getenv('IMAGE_URL'))
+    await message.channel.send(embed=e)
 
 
 def moreLike(playlistID):
