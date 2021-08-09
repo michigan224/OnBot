@@ -160,7 +160,7 @@ async def requestMovie(req, message):
         auth = message.author.name
 
         try:
-            await radarr_cli.add_movie(imdb_id=req, quality=4)
+            radarr_cli.add_movie(imdb_id=req, quality=4)
             await message.channel.send(f'{movie} was successfully added. It should be downloaded and imported soon!')
             conn = mariadb.connect(
                 user=os.getenv('MARIA_DB_USER'),
@@ -225,7 +225,7 @@ async def requestMovie(req, message):
         auth = message.author.name
 
         try:
-            await radarr_cli.add_movie(imdb_id=movie.movieID, quality=4)
+            radarr_cli.add_movie(imdb_id=movie.movieID, quality=4)
             await message.channel.send(f'{movie} was successfully added. It should be downloaded and imported soon!')
             conn = mariadb.connect(
                 user=os.getenv('MARIA_DB_USER'),
