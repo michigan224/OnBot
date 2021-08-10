@@ -42,6 +42,9 @@ async def on_message(message):
     elif 'request movie' in message.clean_content.lower():
         req = message.clean_content.replace('request movie ', '')
         await requestMovie(req, message)
+    elif 'request series' in message.clean_content.lower():
+        req = message.clean_content.replace('request series ', '')
+        await requestSeries(req, message)
     elif 'geomap' in message.clean_content.lower():
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
         await message.delete()
@@ -141,6 +144,7 @@ async def whosOn(message):
 
 
 async def requestMovie(req, message):
+    d = date.today()
     conn = mariadb.connect(
         user=os.getenv('MARIA_DB_USER'),
         password=os.getenv('MARIA_DB_PASS'),
@@ -150,7 +154,7 @@ async def requestMovie(req, message):
     )
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO Requests (Movies,Series,Requested) VALUES (?, ?, ?)", (req, "", message.author.name))
+        "INSERT INTO Requests (Movies,Series,Requested,Date) VALUES (?, ?, ?, ?)", (req, "", message.author.name, d))
     conn.commit()
     conn.close()
     movie = ''
@@ -189,7 +193,7 @@ async def requestMovie(req, message):
         for el in movies:
             if(el.data['kind'] == 'movie'):
                 temp.append(el)
-        movies = temp[:10]
+        movies = temp[:6]
         movieTitles = [el.data['title'] for el in movies]
         movieIDs = [el.movieID for el in movies]
 
@@ -224,7 +228,6 @@ async def requestMovie(req, message):
         movie = movies[emojis.index(reaction[0].emoji)]
         metadata = radarr_cli.lookup_movie(imdb_id=movie.movieID)._data
         metadata = json.dumps(metadata, indent=4)
-        d = date.today()
         auth = message.author.name
 
         try:
@@ -248,6 +251,95 @@ async def requestMovie(req, message):
             print(e)
             await message.channel.send('Movie already on Plex. If not ask David idk gosh man')
             return
+
+
+async def requestSeries(req, message):
+    d = date.today()
+    conn = mariadb.connect(
+        user=os.getenv('MARIA_DB_USER'),
+        password=os.getenv('MARIA_DB_PASS'),
+        host="192.168.4.63",
+        port=3306,
+        database="tron_db"
+    )
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO Requests (Movies,Series,Requested,Date) VALUES (?, ?, ?, ?)", ("", req, message.author.name, d))
+    conn.commit()
+    conn.close()
+    res = sonarr_cli.lookup_serie(req)[:10]
+    found = []
+    titles = []
+    for el in res:
+        if el._data['tvdbId'] and el._data['tvdbId'] not in found:
+            found.append(el._data['tvdbId'])
+            titles.append(el._data['title'])
+    found = found[:6]
+    titles = titles[:6]
+
+    embed = discord.Embed(title='Please react with the correct one')
+    emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣',
+              '7️⃣', '8️⃣', '9️⃣', '🔟', '❌']
+    thumbnail = ''
+    for i in range(len(titles)):
+        url = 'https://api.tvmaze.com/lookup/shows?thetvdb=' + str(found[i])
+        r = requests.get(url)
+        if r.status_code == 200:
+            r = r.json()
+            if r['image'] and thumbnail == '':
+                for el in r['image']:
+                    if thumbnail == '':
+                        thumbnail = r['image'][el]
+            link = r['url']
+            embed.add_field(
+                name=emojis[i], value=f'[{titles[i]}]({link})')
+        else:
+            embed.add_field(
+                name=emojis[i], value=f'{titles[i]}')
+    embed.add_field(name='If you can\'t find what you\'re looking for click the X and Try again with the ID from,',
+                    value='[tvdb](https://thetvdb.com/)', inline=False)
+    if thumbnail != '':
+        embed.set_thumbnail(url=thumbnail)
+    mess1 = await message.channel.send(embed=embed)
+    for i in range(len(titles)):
+        await mess1.add_reaction(emojis[i])
+
+    await mess1.add_reaction('❌')
+
+    def check(reaction, user):
+        return reaction.message.id == mess1.id and (emojis.index(reaction.emoji) != -1) and user == message.author
+
+    reaction = await client.wait_for('reaction_add', check=check)
+    if reaction[0].emoji == '❌':
+        await message.channel.send('Please be more descriptive or try with the IMDB ID')
+        return
+    series = found[emojis.index(reaction[0].emoji)]
+    title = titles[emojis.index(reaction[0].emoji)]
+    metadata = sonarr_cli.lookup_serie(tvdb_id=series)._data
+    metadata = json.dumps(metadata, indent=4)
+    auth = message.author.name
+
+    try:
+        sonarr_cli.add_serie(tvdb_id=series, quality=6)
+        await message.channel.send(f'{title} was successfully added. It should be downloaded and imported soon!')
+        conn = mariadb.connect(
+            user=os.getenv('MARIA_DB_USER'),
+            password=os.getenv('MARIA_DB_PASS'),
+            host="192.168.4.63",
+            port=3306,
+            database="tron_db"
+        )
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO Series (metadata,requested,date) VALUES (?, ?, ?)",
+            (metadata, auth, d))
+        conn.commit()
+        conn.close()
+        return
+    except Exception as e:
+        print(e)
+        await message.channel.send('Series already on Plex. If not ask David idk gosh man')
+        return
 
 
 async def getCarETA(message):
