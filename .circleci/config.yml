@@ -20,6 +20,5 @@ jobs:
       - checkout
       - run:
         name: Install Python Dependencies
-        command: |
-          echo 'Installing dependencies'
+        command: echo 'Installing dependencies'
           pip install --user -r requirements.txt
