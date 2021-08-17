@@ -21,6 +21,8 @@ jobs:
       - image: cimg/python:3.8
     steps:
       - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
+      - run:
+          name: Install Python Dependencies
+          command: |
+            echo 'Installing dependencies'
+            pip install --user -r requirements.txt
