@@ -14,6 +14,7 @@ workflows:
 
 jobs:
   build:
+    executor: python/default
     docker:
       - image: cimg/python:3.8
     steps:
@@ -23,3 +24,4 @@ jobs:
           command: |
             echo 'Installing dependencies'
             pip install --user -r requirements.txt
+      - python/onBot
