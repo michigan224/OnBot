@@ -20,7 +20,6 @@ sonarr_cli = SonarrCli('http://192.168.4.63:8989', os.getenv('SONARR_API_KEY'))
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
-print('yo')
 
 
 @client.event
