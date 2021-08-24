@@ -40,11 +40,11 @@ async def on_message(message):
         for el in moreLike(playlist):  # , name):
             await message.channel.send(el)
     elif 'request movie' in message.clean_content.lower():
-        req = message.clean_content.replace('request movie ', '')
-        await requestMovie(req, message)
+        req = message.clean_content.lower().replace('request movie ', '')
+        await requestMovie(req.lower(), message)
     elif 'request series' in message.clean_content.lower():
-        req = message.clean_content.replace('request series ', '')
-        await requestSeries(req, message)
+        req = message.clean_content.lower().replace('request series ', '')
+        await requestSeries(req.lower(), message)
     elif 'geomap' in message.clean_content.lower():
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
         await message.delete()
