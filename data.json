@@ -1,0 +1,1736 @@
+{
+    "id": "C35C  ",
+    "vin": "1FTER4FH8MLD73517",
+    "receiptDate": "2021-05-13",
+    "releaseDate": "",
+    "etaStartDate": "1990-01-01",
+    "etaEndDate": "1990-01-01",
+    "productionDate": "",
+    "shipmentDate": "",
+    "transitDate": "",
+    "make": "Ford",
+    "year": "2021",
+    "model": "Ranger",
+    "groupOrderType": "Retail (222R) (OBC8S)",
+    "trim": "XLT",
+    "vehicleLineDescription": "Ranger NA",
+    "market": "USA",
+    "status": "",
+    "primaryStatus": "In Production",
+    "windowSticker": "e2e8615c767724ea083f3201b3797786",
+    "finalDeliveredDate": "",
+    "attributes": {
+        "digInteriorAngles": "3",
+        "mpgCityMax": "21.0",
+        "assetMissingPart": "/content/dam/shop_ford/en_us/common/resources/common/common/assetMissingPart.png",
+        "nameplateId": "ford-ranger-2021",
+        "customOrderFormEnabled": "true",
+        "seatingMax": "5",
+        "enable_view360": "true",
+        "nameplateDigImageToken": "Image[|Ford|Ranger|2021|1|1.|100A.R1E..PQ..88Q.572.16K.ADM.XL.~VIRTUALPKGPART_YAAAA_14.~VIRTUALPKGPART_YACAA_16.~VIRTUALPKGPART_YBNAA_17.~VIRTUALPKGPART_YBPAA_18.~VIRTUALPKGPART_YFKAA_19.~VIRTUALPKGPART_ZJ8AA_20.~VIRTUALPKGPART_ZJEAA_21.X71.5 B.MFM.RWD.99H.CLO.SAB.TDP.44U.89H.64A.2021 R1E FORD.]",
+        "lifeCycleStage": "launch",
+        "brandNameplateLink": "/trucks/ranger/2021/",
+        "assetChoosePathLeft": "/content/dam/shop_ford/en_us/common/resources/common/nameplate/2021/ranger/assetChoosePathLeft.png",
+        "urlKey": "ranger",
+        "nameplateDisplayNameShort": "Ranger",
+        "mpgHwyMax": "26.0",
+        "mutexPartClasses": "Paint Type,Interior Trim Colour,Secondary Color,Wheel Type,Mirror Options,Seat Type,Radio Type,Pep Code,Tire Type",
+        "digPowertrainAngles": "1",
+        "metricsName": "ranger",
+        "assetChoosePathRight": "/content/dam/shop_ford/en_us/common/resources/common/nameplate/2021/ranger/assetChoosePathRight.png",
+        "enable_promoFriendsFamily": "false",
+        "digExteriorAngles": "5"
+    },
+    "custOrderDealer": {
+        "dealerName": "Hines Park Ford, Inc.",
+        "dealerUrl": "https://www.hinesparkfordinc.com",
+        "dealerEmail": "ford@hinespark.com",
+        "dealerTelephone": "(248) 437-6700",
+        "routeURL": "https://classic.fordmapping.com/clients/browse.cgi?client=dealerdirect&ovtype=2&f_dlrpa=.53553&rt=1dealer.htm&icon=1",
+        "custOrderDealerAddress": {
+            "state": "MI",
+            "address1": "56558 Pontiac Trail",
+            "address2": "",
+            "address3": "",
+            "city": "New Hudson",
+            "postalCode": "48165",
+            "country": "USA"
+        }
+    },
+    "custOrderPartsInfo": {
+        "Accessories": [
+            {
+                "name": "Options",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "CLUAB",
+                            "BP2_Pages_Exterior_Options_Parts": "display",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTEXTOPT/PARTEXTOPT_130E80EA-8A10-1AE4-7B78-0A867B780A86.jpg",
+                            "description": "Reverse Sensing System",
+                            "BP2_PartDetails_Exterior_Options": "Available on XL 101A and XLT 300A.\nStandard on XLT 301A/302A and LARIAT.\n\nThe Reverse Sensing System audibly alerts you to obstacles when you\u2019re slowly backing up. The closer you get to an obstacle, the more repetitive the alert becomes.",
+                            "BP2_PartDescriptions_Exterior_Options": "Reverse Sensing System",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A5DAA",
+                            "description": "A5DAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "B3HAC",
+                            "description": "Rear-window with Fixed Glass",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "AC--K",
+                            "BP2_PartDetails_Interior_Options": "Standard on XLT and LARIAT.\nIncluded with the STX Special Edition Package.\n\nDual-zone electronic automatic temperature control provides individual climate settings for the driver and front-seat passenger.",
+                            "BP2_Pages_Interior_Options_Parts": "display",
+                            "BP2_PartDescriptions_Interior_Options": "Dual-Zone Electronic Climate Control (DEATC)",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTINTOPT/PARTINTOPT_130E80EB-94FB-FC0D-37DB-162437DB1624.jpg",
+                            "description": "Dual-Zone Electronic Climate Control",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "DEEAB",
+                            "BP2_Pages_Exterior_Options_Parts": "display",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTEXTOPT/PARTEXTOPT_130E80EB-3C99-6736-C818-0138C8180138.jpg",
+                            "description": "Remote Start",
+                            "BP2_PartDetails_Exterior_Options": "Remote Start is included on Ranger XLT 302A and Lariat 501A.\nAvailable on XLT 300A and 301A.",
+                            "BP2_PartDescriptions_Exterior_Options": "Remote Start",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A5GAA",
+                            "description": "A5GAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CN7AF",
+                            "description": "Airbags",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A9PAA",
+                            "description": "A9PAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CFFAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BBGAE",
+                            "BP2_PartDetails_Interior_Options": "Carpet Floor with Floor Mats is available on Ranger XL.",
+                            "BP2_Pages_Interior_Options_Parts": "display",
+                            "BP2_PartDescriptions_Interior_Options": "Carpet Floor with Floor Mats",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTINTOPT/PARTINTOPT_130E80EB-96CB-37EA-AFB4-52FAAFB452FA.jpg",
+                            "description": "Carpet Flooring w/Floor Mats",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "J3KAB",
+                            "description": "J3KAB",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A9SAG",
+                            "BP2_Pages_Exterior_Options_Parts": "display",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTEXTOPT/PARTEXTOPT_130E80EB-0FBF-4560-C81F-DA59C81FDA59.jpg",
+                            "description": "Bedliner &#45; Tough Bed Spray-in",
+                            "BP2_PartDetails_Exterior_Options": "Tough Bed\u00ae Spray-in Bedliner is available on all Ranger Equipment Groups.\n\nNot available with Bed Utility Package.",
+                            "BP2_PartDescriptions_Exterior_Options": "Bedliner \u2013 Tough Bed\u00ae Spray-in",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A9BAA",
+                            "description": "A9BAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "GTAAE",
+                            "BP2_PartDetails_Interior_Options": "Leather-Wrapped Steering Wheel and Shifter is standard on LARIAT.\nIncluded on XLT 301A and 302A Equipment Groups.",
+                            "BP2_Pages_Interior_Options_Parts": "display",
+                            "BP2_PartDescriptions_Interior_Options": "Leather-Wrapped Steering Wheel and Shifter",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTINTOPT/PARTINTOPT_130E80EB-E355-343E-3B53-7EDF3B537EDF.jpg",
+                            "description": "Leather-Wrapped Steering Wheel and Shifter",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "AAKAE",
+                            "BP2_Pages_Exterior_Options_Parts": "display",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTEXTOPT/PARTEXTOPT_130E80EB-A3A9-9143-C818-3579C8183579.jpg",
+                            "description": "Remote Key Fob w/Tailgate Lock",
+                            "BP2_PartDetails_Exterior_Options": "Remote Key Fob with Tailgate Lock is standard on Ranger XLT and LARIAT.\nIncluded on XL 101A with the XL Power Equipment Group Package.",
+                            "BP2_PartDescriptions_Exterior_Options": "Remote Key Fob with Tailgate Lock",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A3EAA",
+                            "description": "A3EAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BAYAA",
+                            "description": "BAYAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "JZJAA",
+                            "description": "JZJAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "FI4AA",
+                            "description": "FI4AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BYBAE",
+                            "description": "BYBAE",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BYPAE",
+                            "description": "BYPAE",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "HUKAB",
+                            "BP2_PartDetails_Interior_Options": "Available on XL 101A and XLT 300A.\nStandard on XLT 301A/302A and LARIAT.\n\nThe 110-volt/150-watt AC plug-in outlet and USB Ports can help you get things done, such as powering an accessory or recharging a battery.",
+                            "BP2_Pages_Interior_Options_Parts": "display",
+                            "BP2_PartDescriptions_Interior_Options": "110V AC Power Outlet and Two (2) USB Ports",
+                            "description": "110V AC Power Outlet",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "HNCAJ",
+                            "BP2_Pages_Exterior_Options_Parts": "display",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTEXTOPT/PARTEXTOPT_130E80EA-0130-431B-AE88-3D3BAE883D3B.jpg",
+                            "description": "Perimeter Anti-Theft Alarm",
+                            "BP2_PartDetails_Exterior_Options": "A Perimeter Anti-Theft Alarm is standard on Ranger XLT and LARIAT.\nIncluded on XL 101A.",
+                            "BP2_PartDescriptions_Exterior_Options": "Perimeter Anti-Theft Alarm",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "GTDAB",
+                            "BP2_PartDetails_Interior_Options": "Cruise Control is standard on Ranger XLT and LARIAT.\nIncluded on XL 101A.",
+                            "BP2_Pages_Interior_Options_Parts": "display",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTINTOPT/PARTINTOPT_130E80EB-091B-258C-37D9-159037D91590.jpg",
+                            "BP2_PartDescriptions_Interior_Options": "Cruise Control",
+                            "description": "Cruise Control",
+                            "BP2_PartDetails_Exterior_Options": "Cruise Control is standard on Ranger XLT and LARIAT.\nIncluded on XL 101A.",
+                            "BP2_PartDescriptions_Exterior_Options": "Cruise Control",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BSBAF",
+                            "BP2_PartDetails_Interior_Options": "Auto-Dimming Rearview Mirror is standard on Ranger XL and LARIAT.\nIncluded on XLT 301A and 302A Equipment Groups.\n\nNot Available with SYNC\u00ae on XL.",
+                            "BP2_Pages_Interior_Options_Parts": "display",
+                            "BP2_PartDescriptions_Interior_Options": "Auto-Dimming Rearview Mirror",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTINTOPT/PARTINTOPT_130E80EA-CFA9-25D3-AE22-41A3AE2241A3.jpg",
+                            "description": "Auto-Dimming Rearview Mirror",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "AAJAA",
+                            "description": "AAJAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BPLAY",
+                            "BP2_Pages_Exterior_Options_Parts": "display",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTEXTOPT/PARTEXTOPT_130E80EB-7FF9-A22C-36D8-E3DF36D8E3DF.jpg",
+                            "description": "5\" Rectangular Black Running Boards",
+                            "BP2_PartDetails_Exterior_Options": "Available on XL, XLT and LARIAT.\n\nBlack running boards help make getting in and out of the cab easier.\nIncluded on the Black Appearance Package.\n\nAvailable equipment on: \n\u2022  XL Chrome Appearance Package\n\u2022  STX Appearance Package\n\u2022  Sport Appearance Package.\n\n\nNot available on XLT or LARIAT with Chrome Appearance Package or Tremor Off-Road Package.",
+                            "BP2_PartDescriptions_Exterior_Options": "5\" Rectangular Black Running Boards",
+                            "isVisible": "true"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "DEBAA",
+                            "description": "DEBAA",
+                            "isVisible": "false"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Packages": [
+            {
+                "name": "Pep Code",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "YZCDZ",
+                            "BP2_Copy_RapidSpec_Heading": "XLT 301A",
+                            "BP2_Copy_RapidSpec_WhyBuys": "XLT Mid Package Includes:|Sport Appearance Package|Auto-Dimming Rearview Mirror|Reverse Sensing System|Leather-Wrapped Steering Wheel and Shifter|110V AC Power Outlet|",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PEP/PEP_130E80EB-A3F1-9FB8-3B85-D0E43B85D0E4.jpg",
+                            "BP2_PartDescriptions_Pep_Code": "XLT 301A",
+                            "description": "301A",
+                            "BP2_PartDetails_Pep_Code": "XLT Mid Package Includes: \n\u2022 Sport Appearance Package\n\u2022 Auto-Dimming Rearview Mirror\n\u2022 Reverse Sensing System\n\u2022 Leather-Wrapped Steering Wheel and Shifter\n\u2022 110V AC Power Outlet",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Special Package",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "AACAA",
+                            "description": "AACAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "J4WAA",
+                            "description": "J4WAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YQXAA",
+                            "description": "YQXAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "AAXAJ",
+                            "BP2_PartDescriptions_Exterior_Packages": "Black Appearance Package",
+                            "BP2_Pages_Exterior_Packages_Parts": "display",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/EXTPKGDTL/EXTPKGDTL_130E80EA-B4D6-1301-D3BC-0ADBD3BC0ADB.jpg",
+                            "description": "Black Appearance Package",
+                            "isVisible": "true",
+                            "BP2_PartDetails_Exterior_Packages": "Available on XLT 301A/302A and LARIAT 501A.\n\nIncludes:\n\u2022 265/60R18 A/S BSW \u2013 4x2\n\u2022 265/60R18 A/T BSW \u2013 4x4\n\u2022 265/60R18 A/T OWL \u2013 with FX4 Off-Road Package\n\u2022 18\" Black Painted Aluminum Wheel with Black Center Cap\n\u2022 Bedliner \u2013 Tough Bed\u00ae Spray-in\n\u2022 Black Ford Logo with Smoked Chrome Surround\n\u2022 Black Grille with Black Surround \u2013 XLT only\n\u2022 Black Grille with Black Surround and Black Bars \u2013 LARIAT only\n\u2022 Black Mirror Skull Caps \u2013 LARIAT only\n\u2022 Black Sill Plates\n\u2022 Black Steel Exposed Bash Plate (with FX4 Off-Road Package)\n\u2022 Body-Color Front & Rear Bumper with Black Lower Front Fascia\n\u2022 Dark Box Decal (FX4 Package or 4x4 only)\n\u2022 Running Boards \u2013 5\" Rectangular \u2013 Black\n\nNot available with:\n\u2022 XLT Chrome Appearance Package\n\u2022 XLT Sport Appearance Package\n\u2022 Lariat Chrome Appearance Package\n\u2022 Lariat Sport Appearance Package\n\u2022 Bed Utility Package\n\u2022 Tremor Off-Road Package"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ADQAA",
+                            "description": "ADQAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "AB2AA",
+                            "description": "AB2AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "C1CAR",
+                            "BP2_PartDescriptions_Exterior_Packages": "Trailer Tow Package",
+                            "BP2_Pages_Exterior_Packages_Parts": "display",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/EXTPKGDTL/EXTPKGDTL_130E80EB-A5D5-13CA-376C-DAAE376CDAAE.jpg",
+                            "description": "Trailer Tow Package",
+                            "isVisible": "true",
+                            "BP2_PartDetails_Exterior_Packages": "Available on XL, XLT and LARIAT.\n\nTowing Capability up to 7,500 lbs.\n\nIncludes:\n\u2022 4-pin/7-pin Wiring Harness\n\u2022 Class IV Trailer Hitch Receiver"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Interior": [
+            {
+                "name": "Radio Type",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "ICFDM",
+                            "BP2_PartDetails_Radio_Type": "AM/FM Radio with 6 Speakers and SYNC\u00ae 3 is standard on Ranger XLT.",
+                            "BP2_PartDescriptions_Radio_Type": "AM/FM Radio with 6 Speakers and SYNC\u00ae 3",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTRADIO/PARTRADIO_130E80EB-1D01-A1D5-3B3A-FAA33B3AFAA3.jpg",
+                            "description": "AM/FM Radio w/6 Speakers and SYNC 3",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Seat Type",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "XF3JL00",
+                            "BP2_Seat_Type_Metadata": "Standard on XLT.\nIncluded with the STX Appearance Package in XL.\n\nIncludes:\n\u2022 Premium Cloth Front Seats\n\u2022 8-Way Manual Adjustable Driver including Lumbar\n\u2022 6-Way Manual Adjustable Passenger\n\u2022 Manual Reclining Seats (included with Driver and Passenger)\n\u2022 Flow-Through Console and Floor Shift",
+                            "BP2_PartDetails_Seat_Type": "Standard on XLT.\nIncluded with the STX Appearance Package in XL.\n\nIncludes:\n\u2022 Premium Cloth Seating Material\n\u2022 8-Way Manual Adjustable Driver including Lumbar\n\u2022 6-Way Manual Adjustable Passenger\n\u2022 Manual Reclining Seats (included with Driver and Passenger)\n\u2022 Flow-Through Console and Floor Shift",
+                            "BP2_PartDescriptions_Seat_Type": "Premium Cloth Bucket Front Seats",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTSEAT/PARTSEAT_130E80EB-8DE3-0B17-3BA3-EDD23BA3EDD2.jpg",
+                            "description": "Premium Cloth Bucket Front Seats",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Interior Trim Colour",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "XF000ZH",
+                            "BP2_PartDescriptions_Interior_Trim_Colour": "Ebony",
+                            "BP2_CanvasMetadata_Interior_Swatch_Texture": "111116|0.10|X111116|partType",
+                            "BP2_CanvasMetadata_Interior_Swatch_Asset": "2019_Ford_Ranger_J1/BP2/INTCHIP/INTCHIP_136B520A-0968-4E72-D862-7CF0D8627CF0.png",
+                            "BP2_PartColors_Interior_Trim_Colour": "0x1b1b1d|1.0|XF000ZH|Default",
+                            "BP2_CanvasMetadata_Interior_Swatch_GroupingName": "Premium Cloth|GROUP2||left|inline",
+                            "description": "Ebony",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Audio Upgrade",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "IEVAL",
+                            "BP2_PartDescriptions_Audio_Upgrade": "SYNC\u00ae 3",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTAUDIO/PARTAUDIO_130E80EB-4CF9-F2A1-3B4A-00533B4A0053.jpg",
+                            "description": "SYNC 3",
+                            "isVisible": "true",
+                            "BP2_PartDetails_Audio_Upgrade": "The Ford Ranger combines exceptional toughness and all-terrain capability with lots of advanced technology with SYNC\u00ae 3*.\n\nIncludes: \n\u2022 Enhanced Voice Recognition Communications and Entertainment System\n\u2022  8\u201d LCD Capacitive Touchscreen in Center Stack with Swipe Capability\n\u2022 Pinch-to-zoom capability included with available Voice-Activated Touchscreen Navigation System\n\u2022 Applink\u00ae\n\u2022 911 Assist\u00ae\n\u2022 Apple CarPlay\u2122 and Android Auto\u2122 Compatibility**\n\u2022 Smart Charging USB Port \u2013 two (2)\n\n\n*SYNC\u00ae is an optional feature. Don't drive while distracted. Use voice-operated systems when possible; don't use handheld devices while driving. Some features may be locked out while the vehicle is in gear. Not all features are compatible with all phones. Message and data rates may apply. Optional Navigation System map updates cannot be received via Wi-fi\u00ae and require a separate update.\n\n**Requires phone with active data service and compatible software. SYNC 3 does not control 3rd party products while in use. 3rd Parties are solely responsible for their respective functionality."
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ICDAV",
+                            "BP2_PartDescriptions_Audio_Upgrade": "SiriusXM\u00ae",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTAUDIO/PARTAUDIO_130E80EA-DDDB-7771-83DE-12AC83DE12AC.jpg",
+                            "description": "SiriusXM Satellite Radio",
+                            "isVisible": "true",
+                            "BP2_PartDetails_Audio_Upgrade": "SiriusXM: What you love is on now\n\nAll SiriusXM-equipped new Model Year 2021 Ford vehicles with SYNC 3 come with a 3-month* All Access trial subscription so you get to try the widest variety of entertainment anywhere including the deepest variety of music, ad-free, more sports coverage than anywhere, exclusive talk channels, every kind of comedy and the most complete news coverage. You can also enjoy SiriusXM online, on the app and at home on connected devices \u2014 it\u2019s included with your All Access trial subscription. \n\n*Trial length and service availability may vary by model, model year or trim."
+                        }
+                    }
+                ]
+            }
+        ],
+        "Model Information": [
+            {
+                "name": "ModelGroup",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "SEXRGJ",
+                            "BP2_Pages_Models_Why_Buys": "Key Features:|Ford Co-Pilot360\u2122|SYNC\u00ae 3|Dual-Zone Electronic Climate Control (DEATC)|17\" Silver-Painted Aluminum Wheels|",
+                            "description": "XLT",
+                            "BP2_Pages_VehicleName_PowerBar": "2021 Ranger XLT SuperCrew\u00ae 4x4",
+                            "BP2_Pages_VehicleName_Disclaimer": "2021 Ford Ranger XLT SuperCrew\u00ae, 5' Box, 4x4, 2.3L EcoBoost Engine with Auto Start-Stop Technology, Electronic Ten-Speed Automatic Transmission, 3.73 Open Style Axle Ratio",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Transmissions",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "TR-EU",
+                            "BP2_PartDescriptions_Transmissions": "Electronic Ten-Speed Automatic Transmission",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTTRANS/PARTTRANS_130E80EA-B464-8C81-75C4-67DF75C467DF.jpg",
+                            "description": "Electronic Ten-Speed Automatic Transmission",
+                            "BP2_PartDetails_Transmissions": "The 10-speed SelectShift\u00ae automatic transmission, featuring Ford-patented technology, optimizes gear progressions and delivers smooth, quick shifting up and down the gearbox. Features include wide-span gear spacing coupled with drag-reduction actions plus three overdrive gears.",
+                            "BP2_Pages_VehicleName_Disclaimer": "2021 Ford Ranger XLT SuperCrew\u00ae, 5' Box, 4x4, 2.3L EcoBoost Engine with Auto Start-Stop Technology, Electronic Ten-Speed Automatic Transmission, 3.73 Open Style Axle Ratio",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Drive",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "DR--E",
+                            "BP2_PartDescriptions_Drive": "4X4",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTDRIVE/PARTDRIVE_130E80EB-1E08-6FDE-411A-1C51411A1C51.jpg",
+                            "description": "4X4",
+                            "BP2_Pages_VehicleName_PowerBar": "2021 Ranger XLT SuperCrew\u00ae 4x4",
+                            "BP2_Pages_VehicleName_Disclaimer": "2021 Ford Ranger XLT SuperCrew\u00ae, 5' Box, 4x4, 2.3L EcoBoost Engine with Auto Start-Stop Technology, Electronic Ten-Speed Automatic Transmission, 3.73 Open Style Axle Ratio",
+                            "isVisible": "true",
+                            "BP2_PartDetails_Drive": "4X4 is available on all Ranger models."
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Engine",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "EN-N3",
+                            "BP2_PartDescriptions_Engine": "2.3L EcoBoost Engine with Auto Start-Stop Technology",
+                            "BP2_PartDetails_Engine": "The 2.3L EcoBoost\u00ae is engineered with a precise direct injection system and 16 free-breathing valves. The twin-scroll turbocharger extracts exhaust gas from pairs of cylinders in alternating sequence, maximizing pulse energy to the turbine wheel for responsiveness on demand with virtually no lag. The 2.3L EcoBoost puts out 270 horsepower and a best-in-class gas-powered torque rating of 310 lb.-ft.*\u2020\n\n*Class is Midsize Pickups.\n\n\u2020Always consult the owner\u2019s manual before off-road driving. Follow all laws and drive on designated off-road trails and recreation areas.",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTENG/PARTENG_130E80EA-DE85-7DBF-75C2-4E0E75C24E0E.jpg",
+                            "description": "2.3L EcoBoost Engine with Auto Start-Stop Technology",
+                            "BP2_Pages_VehicleName_Disclaimer": "2021 Ford Ranger XLT SuperCrew\u00ae, 5' Box, 4x4, 2.3L EcoBoost Engine with Auto Start-Stop Technology, Electronic Ten-Speed Automatic Transmission, 3.73 Open Style Axle Ratio",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Exterior": [
+            {
+                "name": "Tire Type",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "D3HFH",
+                            "description": "265/60R18 A/T BSW Tires",
+                            "isVisible": "true",
+                            "BP2_PartDescriptions_Tire_Type": "265/60 R18 A/T BSW Tire",
+                            "BP2_PartDetails_Tire_Type": "Standard on LARIAT 4x4 with 18\" Wheels.\nIncluded  4x4 STX Special Edition Package and 4x4 Black Appearance Package with 18\" Wheels."
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Rear Axle Ratios",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "EGJAE",
+                            "BP2_PartDetails_Rear_Axle_Ratios": "Standard on XL",
+                            "BP2_PartDescriptions_Rear_Axle_Ratios": "Open Style Differential Axle",
+                            "description": "3.73 Open Style Diffrential Axle",
+                            "BP2_Pages_VehicleName_Disclaimer": "2021 Ford Ranger XLT SuperCrew\u00ae, 5' Box, 4x4, 2.3L EcoBoost Engine with Auto Start-Stop Technology, Electronic Ten-Speed Automatic Transmission, 3.73 Open Style Axle Ratio",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Paint Type",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "PNZAT",
+                            "BP2_PartDescriptions_Paint_Type": "Shadow Black",
+                            "BP2_PartColors_Paint_Type": "0x10101d|1.00|normal|carBody",
+                            "description": "Shadow Black",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Wheel Type",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "D2ULB",
+                            "BP2_PartDetails_Wheel_Type": "18\" Black Painted Aluminum Wheels with Black Center Cap are included with the Black Appearance Package.",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/PARTWHL/PARTWHL_130E80EB-BF1B-5C09-90D6-A0EE90D6A0EE.jpg",
+                            "description": "18&#148; Black Painted Aluminum Wheels w/Black Center Cap",
+                            "BP2_PartDescriptions_Wheel_Type": "18\" Black Painted Aluminum Wheels with Black Center Cap",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Other": [
+            {
+                "name": "Fleet Selector",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "YZKAA",
+                            "description": "Non Fleet / Retail",
+                            "isVisible": "false"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Cab",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "CAXRBC",
+                            "BP2_PartDescriptions_Body_Code": "SuperCrew\u00ae 4x4 \u2013 5' Box",
+                            "BP2_PartDescriptions_Cab": "SuperCrew\u00ae",
+                            "description": "Crew Cab",
+                            "BP2_Pages_VehicleName_PowerBar": "2021 Ranger XLT SuperCrew\u00ae 4x4",
+                            "BP2_Pages_VehicleName_Disclaimer": "2021 Ford Ranger XLT SuperCrew\u00ae, 5' Box, 4x4, 2.3L EcoBoost Engine with Auto Start-Stop Technology, Electronic Ten-Speed Automatic Transmission, 3.73 Open Style Axle Ratio",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Overflow Partclass",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "CP9AJ",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A1KAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BBICM",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "HKCAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "HBGAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BBHAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "D3MJF",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "HNLAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "FAFAV",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "JCBAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "JBBAG",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "IELAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CLVAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CACAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CPCAI",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "JEDAD",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "HLLAH",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A7EAC",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "B2GAE",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "D17AL",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A1CAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BCBAC",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BLDAV",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "HJEAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CANAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BCFAJ",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BHNAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A2EAK",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "GBLAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "B2CAJ",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BSLAF",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "JCLAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A2RAS",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BU6AA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BCLSB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "HLNAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CBGAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "IDBAD",
+                            "description": "AM/FM Radio w/6 Speakers",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "D19AB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A7AAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "B2DAC",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A4DAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BCAAC",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "C1DAD",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "C7SAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ICEHE",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A9JAC",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CBFAM",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "DWAAF",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "IBMAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BWFAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BYQAD",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CAAAE",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "B3NAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CLFCJ",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CAEAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "C1VAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ABML6",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BA7AB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "IGDAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "F5BAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "J3PAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "HJGAJ",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "C1UAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "CLMAM",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BA8AF",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BMCAI",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "D1ZAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "HDHAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "GBTAG",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "A1PBK",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "BWJAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "HCAAT",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "FEAAM",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "JBKAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "JBCAB",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "PRODUCTROOT",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "XFXRBC--EXRGJCDZVSU",
+                            "description": "SuperCrew 4x4 5' Box 301A R4F",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Fleet Options",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "HLDAA",
+                            "description": "HLDAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "JB4AA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Accessories",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "ZJ6AA",
+                            "description": "ZJ6AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YFBAA",
+                            "description": "YFBAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YDWAA",
+                            "description": "YDWAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YDIAA",
+                            "description": "YDIAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YFJAA",
+                            "description": "LESS PASS SIDE PIVOT STRGE BOX",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJAAA",
+                            "description": "ZJAAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YBSAA",
+                            "description": "Less Soft Bed",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJ9AA",
+                            "description": "ZJ9AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YAEAA",
+                            "description": "YAEAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YBRAA",
+                            "description": "Less Bed Tray",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YFHAA",
+                            "description": "YFHAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YFKAA",
+                            "description": "YFKAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YAMAA",
+                            "description": "YAMAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJ5AA",
+                            "description": "ZJ5AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YEYAA",
+                            "description": "YEYAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YAAAA",
+                            "description": "YAAAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YBYAA",
+                            "description": "Less Protective Seat Covers",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJCAA",
+                            "description": "ZJCAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YFLAA",
+                            "description": "YFLAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YBNAA",
+                            "description": "YBNAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YACAA",
+                            "description": "YACAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YP9AA",
+                            "description": "Less Commercial Roadside Assistance Kit",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YPPAA",
+                            "description": "YPPAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YECAA",
+                            "description": "YECAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJBAA",
+                            "description": "ZJBAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YP8AA",
+                            "description": "LESS TRAVEL PACKAGE",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJDAA",
+                            "description": "ZJDAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YBZAA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJEAA",
+                            "description": "ZJEAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YDQAA",
+                            "description": "YDQAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YF2AA",
+                            "description": "",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YBWAA",
+                            "description": "YBWAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YAWAA",
+                            "description": "YAWAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YFDAA",
+                            "description": "Less Brake Controller",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJGAA",
+                            "description": "Less Case for GB-50",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YAZAA",
+                            "description": "YAZAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YF3AA",
+                            "description": "less Damper",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YBPAA",
+                            "description": "YBPAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YD3AA",
+                            "description": "YD3AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YDVAA",
+                            "description": "YDVAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YLKAA",
+                            "description": "YLKAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YRCAA",
+                            "description": "YRCAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJ3AA",
+                            "description": "ZJ3AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YAJAA",
+                            "description": "YAJAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YEHAA",
+                            "description": "YEHAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YKHAA",
+                            "description": "YKHAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YF4AA",
+                            "description": "LESS HITCH KIT",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YF5AA",
+                            "description": "Less Battery Jump Starter",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YD8AA",
+                            "description": "YD8AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YDPAA",
+                            "description": "YDPAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJ7AA",
+                            "description": "ZJ7AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YEJAA",
+                            "description": "YEJAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJ1AA",
+                            "description": "ZJ1AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YAYAA",
+                            "description": "LESS TRIM KIT",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YPBAA",
+                            "description": "Less Roadside Assistance Kit",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YPWAA",
+                            "description": "YPWAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YLCAA",
+                            "description": "LESS MRKTG REGIONAL PKGS 3",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YE5AA",
+                            "description": "Less Side Deflector",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YEEAA",
+                            "description": "YEEAA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJFAA",
+                            "description": "Less Bad Tent",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJ4AA",
+                            "description": "ZJ4AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YB5AA",
+                            "description": "LESS BED EXTENDER",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YDXAA",
+                            "description": "LESS TAILGATE SPOILER",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YQ9AA",
+                            "description": "YQ9AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJ2AA",
+                            "description": "ZJ2AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YF1AA",
+                            "description": "LESS BED TAILGATE LOCK",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YD2AA",
+                            "description": "YD2AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YEZAA",
+                            "description": "LESS FIRST AID KIT",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "ZJ8AA",
+                            "description": "ZJ8AA",
+                            "isVisible": "false"
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "werscode": "YADAA",
+                            "description": "YADAA",
+                            "isVisible": "false"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Exterior Mirrors",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "BSHA6",
+                            "BP2_Pages_Mirror_Options_Parts": "display",
+                            "BP2_PartDetails_Exterior_Mirrors": "Power Glass Sideview Mirrors are standard on Lariat.",
+                            "BP2_PartDescriptions_Exterior_Mirrors": "Power Glass Sideview Mirrors",
+                            "bp2PartImage": "2021_Ford_Ranger_J1/BP2/DTLEXMR/DTLEXMR_130E80EA-6D61-DC0D-725A-7D6C725A7D6C.png",
+                            "description": "Power Glass Sideview Mirrors",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Body Code",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "YZVSU",
+                            "BP2_PartDescriptions_Body_Code": "SuperCrew\u00ae 4x4 \u2013 5' Box",
+                            "description": "R4F",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Seat Material",
+                "parts": [
+                    {
+                        "attributes": {
+                            "werscode": "PCL45",
+                            "BP2_PartDescriptions_Interior_Trim_Colour": "Ebony",
+                            "BP2_CanvasMetadata_Interior_Swatch_Texture": "111116|0.10|X111116|partType",
+                            "BP2_CanvasMetadata_Interior_Swatch_Asset": "2019_Ford_Ranger_J1/BP2/INTCHIP/INTCHIP_136B520A-0968-4E72-D862-7CF0D8627CF0.png",
+                            "BP2_PartColors_Interior_Trim_Colour": "0x1b1b1d|1.0|XF000ZH|Default",
+                            "BP2_CanvasMetadata_Interior_Swatch_GroupingName": "Premium Cloth|GROUP2||left|inline",
+                            "description": "Premium Cloth",
+                            "isVisible": "true"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "custOrderImgToken": "Image[|Ford|Ranger|2021|1|1.|301A.R4F..G1..88L.86S.RFK.574.16E.18Y.ADM.55U.50B.LWS.52B.PAT.55K.XLT.X71.76J.53R.58M.PSM.AWD.99H.PCL.CAB.TFH.44U.89H.64B.SSR.SY3.2021 R4F FORD.]"
+}

@@ -9,6 +9,7 @@ import mariadb
 from datetime import date, datetime
 import json
 import requests
+import re
 
 load_dotenv()
 ia = IMDb()
@@ -32,7 +33,7 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if ('who' in message.clean_content.lower() and 'on' in message.clean_content.lower()):
+    if 'who' in re.split(",|\s|’", message.clean_content.lower()) and 'on' in re.split(",|\s|’", message.clean_content.lower()):
         await whosOn(message)
     elif 'more like' in message.clean_content.lower():
         playlist = message.clean_content.replace('more like ', '')
