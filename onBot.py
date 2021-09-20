@@ -33,7 +33,8 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if 'who' in re.split(",|\s|’", message.clean_content.lower()) and 'on' in re.split(",|\s|’", message.clean_content.lower()):
+    msg = re.split(",|\s|’", message.clean_content.lower())
+    if (('who' in msg or 'whos' in msg)  and 'on' in msg) or 'whoson' in msg or 'whose on' in message.clean_content.lower():
         await whosOn(message)
     elif 'more like' in message.clean_content.lower():
         playlist = message.clean_content.replace('more like ', '')
