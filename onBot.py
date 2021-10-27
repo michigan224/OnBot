@@ -5,7 +5,6 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from imdb import IMDb
 from pycliarr.api import RadarrCli, SonarrCli
-import mariadb
 from datetime import date, datetime
 import json
 import requests
@@ -43,10 +42,10 @@ async def on_message(message):
             await message.channel.send(el)
     elif 'request movie' in message.clean_content.lower():
         req = message.clean_content.lower().replace('request movie ', '')
-        await requestMovie(req.lower(), message)
+        # await requestMovie(req.lower(), message)
     elif 'request series' in message.clean_content.lower():
         req = message.clean_content.lower().replace('request series ', '')
-        await requestSeries(req.lower(), message)
+        # await requestSeries(req.lower(), message)
     elif 'geomap' in message.clean_content.lower():
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
         await message.delete()
@@ -75,10 +74,10 @@ async def whosOn(message):
         songID = ''
         gName = ''
         if not member.bot and member != message.author:
+            memberName = member.nick if member.nick else member.name
             if member.status == discord.Status.online:
                 memids.append(member.id)
                 activities = member.activities
-                memberName = member.nick if member.nick != 'None' else member.name
                 for act in activities:
                     if isinstance(act, discord.activity.Spotify):
                         spot = True
@@ -147,7 +146,7 @@ async def whosOn(message):
     return
 
 
-async def requestMovie(req, message):
+# async def requestMovie(req, message):
     d = date.today()
     conn = mariadb.connect(
         user=os.getenv('MARIA_DB_USER'),
@@ -257,7 +256,7 @@ async def requestMovie(req, message):
             return
 
 
-async def requestSeries(req, message):
+# async def requestSeries(req, message):
     d = date.today()
     conn = mariadb.connect(
         user=os.getenv('MARIA_DB_USER'),
