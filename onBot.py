@@ -78,7 +78,7 @@ async def whosOn(message):
             if member.status == discord.Status.online:
                 memids.append(member.id)
                 activities = member.activities
-                memberName = member.nick if member.nick else member.name
+                memberName = member.nick if member.nick != 'None' else member.name
                 for act in activities:
                     if isinstance(act, discord.activity.Spotify):
                         spot = True
