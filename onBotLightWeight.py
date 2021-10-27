@@ -342,6 +342,7 @@ async def requestSeries(req, message):
     except Exception as e:
         print(e)
         await message.channel.send('Series already on Plex. If not ask David idk gosh man')
+        conn.close()
         return
 
 
