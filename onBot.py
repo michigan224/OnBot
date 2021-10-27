@@ -78,6 +78,7 @@ async def whosOn(message):
             if member.status == discord.Status.online:
                 memids.append(member.id)
                 activities = member.activities
+                memberName = member.nick if member.nick else member.name
                 for act in activities:
                     if isinstance(act, discord.activity.Spotify):
                         spot = True
@@ -97,14 +98,14 @@ async def whosOn(message):
                 if game and spot:
                     if gName == 'Rocket League':
                         messageOut += ('\n**%s** is listening to %s while playing Rocket' %
-                                       (member.nick, song))
+                                       (memberName, song))
 
                     elif gName == 'Fortnite':
                         messageOut += ('\n**%s** is listening to %s while playing Fornite' %
-                                       (member.nick, song))
+                                       (memberName, song))
                     else:
                         messageOut += ('\n**%s** is listening to %s while playing %s' %
-                                       (member.nick, song, gName))
+                                       (memberName, song, gName))
                     messageOut += (
                         '\nYou can listen here: https://open.spotify.com/track/%s' % (songID))
                 elif stream and spot:
@@ -114,29 +115,29 @@ async def whosOn(message):
                         '\nYou can listen here: https://open.spotify.com/track/%s' % (songID))
                 elif spot:
                     messageOut += ('\n**%s** is listening to %s' %
-                                   (member.nick, song))
+                                   (memberName, song))
                     messageOut += (
                         '\nYou can listen here: https://open.spotify.com/track/%s' % (songID))
                 elif game:
                     messageOut += ('\n**%s** is playing %s' %
-                                   (member.nick, gName))
+                                   (memberName, gName))
                 elif stream:
                     messageOut += ('\n**%s** is streaming %s at %s' %
                                    (sName, sGame, sURL))
                 else:
                     messageOut += ('\n**%s** is online but isn\'t doing anything' %
-                                   (member.nick))
+                                   (memberName))
             elif member.status == discord.Status.idle:
                 messageOut += (
-                    '\n**%s** is idle like a loser. Either get on or get off, jesus.' % (member.nick))
+                    '\n**%s** is idle like a loser. Either get on or get off, jesus.' % (memberName))
             elif member.status == discord.Status.dnd:
                 messageOut += ('\n**%s** doesn\'t want to be disturbed.' %
-                               (member.nick))
+                               (memberName))
             elif member.status == discord.Status.invisible:
                 messageOut += ('\n**%s** is invisible. They\'re probably watching TV' %
-                               (member.nick))
+                               (memberName))
             else:
-                off.append(member.nick)
+                off.append(memberName)
     if messageOut == 'Ok %s. Since it\'s so hard to look yourself i\'ll look for you' % (author):
         await message.channel.send(messageOut + '\nLooks like no one is on. You\'re going to have to play alone.')
         await message.delete()
