@@ -137,7 +137,7 @@ async def whosOn(message):
                 messageOut += ('\n**%s** is invisible. They\'re probably watching TV' %
                                (memberName))
             else:
-                off.append(memberName)
+                off.append(member.name)
     if messageOut == 'Ok %s. Since it\'s so hard to look yourself i\'ll look for you' % (author):
         await message.channel.send(messageOut + '\nLooks like no one is on. You\'re going to have to play alone.')
         await message.delete()
