@@ -64,6 +64,10 @@ async def whosOn(message):
     members = message.channel.members
     messageOut = (
         'Ok %s. Since it\'s so hard to look yourself i\'ll look for you' % (author))
+    embed = discord.Embed(
+        title="Who's on?",
+        colour=discord.Colour.blue()
+    )
     memids = []
     off = []
     for member in members:
@@ -96,43 +100,65 @@ async def whosOn(message):
                         sURL = act.url
                 if game and spot:
                     if gName == 'Rocket League':
+                        embed.add_field(name=memberName,
+                                        value=f'Listening to {song} while playing Rocket', inline=False)
                         messageOut += ('\n**%s** is listening to %s while playing Rocket' %
                                        (memberName, song))
 
                     elif gName == 'Fortnite':
+                        embed.add_field(name=memberName,
+                                        value=f'Listening to {song} while playing Fortnite', inline=False)
                         messageOut += ('\n**%s** is listening to %s while playing Fornite' %
                                        (memberName, song))
                     else:
+                        embed.add_field(name=memberName,
+                                        value=f'Listening to {song} while playing {gName}', inline=False)
                         messageOut += ('\n**%s** is listening to %s while playing %s' %
                                        (memberName, song, gName))
                     messageOut += (
                         '\nYou can listen here: https://open.spotify.com/track/%s' % (songID))
                 elif stream and spot:
+                    embed.add_field(name=sName,
+                                    value=f'Streaming {sGame} at {sURL} while listening to {song}', inline=False)
                     messageOut += ('\n**%s** is streaming %s at %s while listening to %s' %
                                    (sName, sGame, sURL, song))
                     messageOut += (
                         '\nYou can listen here: https://open.spotify.com/track/%s' % (songID))
                 elif spot:
+                    embed.add_field(name=memberName,
+                                    value=f'Listening to {song}', inline=False)
                     messageOut += ('\n**%s** is listening to %s' %
                                    (memberName, song))
                     messageOut += (
                         '\nYou can listen here: https://open.spotify.com/track/%s' % (songID))
                 elif game:
+                    embed.add_field(name=memberName,
+                                    value=f'Playing {gName}', inline=False)
                     messageOut += ('\n**%s** is playing %s' %
                                    (memberName, gName))
                 elif stream:
+                    embed.add_field(name=sName,
+                                    value=f'Streaming {sGame} at {sURL}', inline=False)
                     messageOut += ('\n**%s** is streaming %s at %s' %
                                    (sName, sGame, sURL))
                 else:
+                    embed.add_field(name=memberName,
+                                    value=f'Online but not doing anything', inline=False)
                     messageOut += ('\n**%s** is online but isn\'t doing anything' %
                                    (memberName))
             elif member.status == discord.Status.idle:
+                embed.add_field(name=memberName,
+                                value=f'Idle like a loser. Either get on or get off, jesus.', inline=False)
                 messageOut += (
                     '\n**%s** is idle like a loser. Either get on or get off, jesus.' % (memberName))
             elif member.status == discord.Status.dnd:
+                embed.add_field(name=memberName,
+                                value=f'Doesn\'t want to be disturbed.', inline=False)
                 messageOut += ('\n**%s** doesn\'t want to be disturbed.' %
                                (memberName))
             elif member.status == discord.Status.invisible:
+                embed.add_field(name=memberName,
+                                value=f'Invisible. They\'re probably watching TV', inline=False)
                 messageOut += ('\n**%s** is invisible. They\'re probably watching TV' %
                                (memberName))
             else:
@@ -141,7 +167,7 @@ async def whosOn(message):
         await message.channel.send(messageOut + '\nLooks like no one is on. You\'re going to have to play alone.')
         await message.delete()
         return
-    await message.channel.send(messageOut)
+    await message.channel.send(embed=embed)
     await message.delete()
     return
 
