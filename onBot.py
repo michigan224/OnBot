@@ -78,6 +78,7 @@ async def whosOn(message):
         song = ''
         songID = ''
         gName = ''
+        gState = ''
         if not member.bot and member != message.author:
             memberName = member.nick if member.nick else member.name
             if member.status != discord.Status.offline:
@@ -91,35 +92,41 @@ async def whosOn(message):
                     if isinstance(act, discord.activity.Activity):
                         game = True
                         gName = act.name
+                        gState = act.state
+                        gState = f" ({gState})" if gState else ''
                     if isinstance(act, discord.activity.Game):
                         game = True
                         gName = act.name
+                        gState = act.state
+                        gState = f" ({gState})" if gState else ''
                     if isinstance(act, discord.activity.Streaming):
                         stream = True
                         sName = act.twitch_name
                         sGame = act.game
                         sURL = act.url
+                    if isinstance(act, discord.activity.CustomActivity):
+                        print(act)
                 if game and spot and stream:
                     embed.add_field(name=memberName,
-                                    value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing Rocket and streaming [here]({sURL})', inline=False)
+                                    value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing Rocket{gState} and streaming [here]({sURL})', inline=False)
                 elif game and spot:
                     if gName == 'Rocket League':
                         active = True
                         embed.add_field(name=memberName,
-                                        value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing Rocket', inline=False)
+                                        value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing Rocket{gState}', inline=False)
                         messageOut += ('\n**%s** is listening to %s while playing Rocket' %
                                        (memberName, song))
 
                     elif gName == 'Fortnite':
                         active = True
                         embed.add_field(name=memberName,
-                                        value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing Fortnite', inline=False)
+                                        value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing Fortnite{gState}', inline=False)
                         messageOut += ('\n**%s** is listening to %s while playing Fornite' %
                                        (memberName, song))
                     else:
                         active = True
                         embed.add_field(name=memberName,
-                                        value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing {gName}', inline=False)
+                                        value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing {gName}{gState}', inline=False)
                         messageOut += ('\n**%s** is listening to %s while playing %s' %
                                        (memberName, song, gName))
                     messageOut += (
@@ -143,13 +150,13 @@ async def whosOn(message):
                 elif game:
                     active = True
                     embed.add_field(name=memberName,
-                                    value=f'Playing {gName}', inline=False)
+                                    value=f'Playing {gName}{gState}', inline=False)
                     messageOut += ('\n**%s** is playing %s' %
                                    (memberName, gName))
                 elif stream:
                     active = True
                     embed.add_field(name=sName,
-                                    value=f'Streaming {sGame} at {sURL}', inline=False)
+                                    value=f'Streaming {sGame}{gState} at {sURL}', inline=False)
                     messageOut += ('\n**%s** is streaming %s at %s' %
                                    (sName, sGame, sURL))
                 else:
