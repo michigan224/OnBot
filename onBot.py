@@ -1,3 +1,4 @@
+from datetime import datetime
 import discord
 from dotenv import load_dotenv
 import os
@@ -9,9 +10,14 @@ from datetime import date, datetime
 import json
 import requests
 import re
+import logging
 
 load_dotenv()
 ia = IMDb()
+LOG_FILENAME = datetime.now().strftime('./logs/logfile_%H_%M_%S_%d_%m_%Y.log')
+for handler in logging.root.handlers[:]:
+    logging.root.removeHandler(handler)
+logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG)
 
 SPOTIPY_CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID')
 SPOTIPY_CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET')
@@ -30,6 +36,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    logging.info(f"{message.author} sent '{message.content}'")
     if message.author == client.user:
         return
     msg = re.split(",|\s|’", message.clean_content.lower())
