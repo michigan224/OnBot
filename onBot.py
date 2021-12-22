@@ -39,6 +39,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    breakpoint()
     logging.info(f"{message.author} sent '{message.content}'")
     if message.author == client.user:
         return
