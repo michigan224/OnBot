@@ -14,6 +14,9 @@ import logging
 
 load_dotenv()
 ia = IMDb()
+
+if not os.path.exists('logs'):
+    os.makedirs('logs')
 LOG_FILENAME = datetime.now().strftime('./logs/logfile_%H_%M_%S_%d_%m_%Y.log')
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
@@ -37,6 +40,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    breakpoint()
     logging.info(f"{message.author} sent '{message.content}'")
     if message.author == client.user:
         return
