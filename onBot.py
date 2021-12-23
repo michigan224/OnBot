@@ -25,13 +25,14 @@ radarr_cli = RadarrCli('http://192.168.4.63:7878', os.getenv('RADARR_API_KEY'))
 sonarr_cli = SonarrCli('http://192.168.4.63:8989', os.getenv('SONARR_API_KEY'))
 
 intents = discord.Intents.all()
-client = discord.Client(intents=intents)
+activity = discord.Activity(
+    type=discord.ActivityType.listening, name="you monkey brains")
+client = discord.Client(intents=intents, activity=activity)
 
 
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="you monkey brains"))
 
 
 @client.event
