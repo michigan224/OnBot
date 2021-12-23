@@ -24,14 +24,14 @@ client = discord.Client(intents=intents, activity=activity)
 
 @client.event
 async def on_ready():
-    """Logs when the bot is ready."""
+    """Log when the bot is ready."""
     print(f'We have logged in as {client.user}')
     logging.info('We have logged in as %s', client.user)
 
 
 @client.event
 async def on_message(message):
-    """Handles a message."""
+    """Handle a message."""
     logging.info("%s sent '%s'", message.author, message.content)
     if message.author == client.user:
         return
@@ -47,7 +47,7 @@ async def on_message(message):
 
 
 async def whos_on(message):
-    """Sends a message with the users that are on."""
+    """Send a message with the users that are on."""
     members = message.channel.members
     embed = discord.Embed(
         title="Who's on?",
