@@ -22,7 +22,7 @@ jobs:
           pip install pydocstyle
       - name: Analysing the code with pylint
         run: |
-          pylint $(git ls-files '*.py')
+          pylint onbot.py
       - name: Analysing the code with pydocstyle
         run: |
-          pydocstyle $(git ls-files '*.py')
+          pydocstyle onbot.py
