@@ -11,10 +11,16 @@ load_dotenv()
 
 if not os.path.exists('logs'):
     os.makedirs('logs')
-LOG_FILENAME = datetime.now().strftime('./logs/logfile_%H_%M_%S_%d_%m_%Y.log')
-for handler in logging.root.handlers[:]:
-    logging.root.removeHandler(handler)
-logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG)
+
+logger = logging.getLogger(__name__)
+
+handler = logging.handlers.TimedRotatingFileHandler(
+    filename='runtime.log', when='D', interval=1, backupCount=10, encoding='utf-8', delay=False)
+formatter = logging.Formatter(
+    fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+
+logger.addHandler(handler)
 
 intents = discord.Intents.all()
 activity = discord.Activity(
@@ -26,21 +32,21 @@ client = discord.Client(intents=intents, activity=activity)
 async def on_ready():
     """Log when the bot is ready."""
     print(f'We have logged in as {client.user}')
-    logging.info('We have logged in as %s', client.user)
+    logger.info('We have logged in as %s', client.user)
 
 
 @client.event
 async def on_message(message):
     """Handle a message."""
-    logging.info("%s sent '%s'", message.author, message.content)
+    logger.info("%s sent '%s'", message.author, message.content)
     if message.author == client.user:
         return
     msg = message.clean_content.lower().translate(
         str.maketrans('', '', string.punctuation)).split()
-    logging.info("Split message: %s", msg)
+    logger.info("Split message: %s", msg)
     if ((('who' in msg or 'whos' in msg) and 'on' in msg)
             or 'whoson' in msg or 'whose on' in message.clean_content.lower()):
-        logging.info("%s requested who's on", message.author)
+        logger.info("%s requested who's on", message.author)
         await whos_on(message)
     elif 'geomap' in message.clean_content.lower():
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
@@ -56,12 +62,12 @@ async def whos_on(message):
     )
     alone = True
     for member in members:
-        logging.debug('Getting response for %s', member)
+        logger.debug('Getting response for %s', member)
         if member.bot or member == message.author:
             continue
         resp = await get_member_message(member)
         if resp:
-            logging.debug('Got response %s', resp)
+            logger.debug('Got response %s', resp)
             alone = False
             embed.add_field(
                 name=resp['name'], value=resp['value'], inline=resp['inline'])
@@ -70,11 +76,11 @@ async def whos_on(message):
         embed.add_field(name='RIP',
                         value='Looks like no one is on. You\'re going to have to play alone.',
                         inline=False)
-    logging.debug('Sending embed')
+    logger.debug('Sending embed')
     await message.channel.send(embed=embed)
-    logging.debug('Sent embed, deleting message')
+    logger.debug('Sent embed, deleting message')
     await message.delete()
-    logging.debug('Deleted message')
+    logger.debug('Deleted message')
     return
 
 
@@ -87,10 +93,10 @@ async def get_member_message(member):
     activities = member.activities
     (spot, game, stream, song, song_id, game_name, game_state,
      stream_name, stream_game, stream_url) = await handle_activities(activities)
-    logging.debug('Handling member %s', member_name)
-    logging.debug('spot: %s, game: %s, stream: %s', spot, game, stream)
-    logging.debug('song: %s, song_id: %s, game_name: %s, game_state: %s',
-                  song, song_id, game_name, game_state)
+    logger.debug('Handling member %s', member_name)
+    logger.debug('spot: %s, game: %s, stream: %s', spot, game, stream)
+    logger.debug('song: %s, song_id: %s, game_name: %s, game_state: %s',
+                 song, song_id, game_name, game_state)
     if game and spot and stream:
         field = {
             'name': member_name,
@@ -153,7 +159,7 @@ async def get_member_message(member):
             'value': 'Invisible. They\'re probably watching TV',
             'inline': False
         }
-    logging.debug('Returning field %s', field)
+    logger.debug('Returning field %s', field)
     if field:
         return field
     return {
