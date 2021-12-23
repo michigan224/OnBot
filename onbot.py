@@ -40,6 +40,7 @@ async def on_message(message):
     logging.info("Split message: %s", msg)
     if ((('who' in msg or 'whos' in msg) and 'on' in msg)
             or 'whoson' in msg or 'whose on' in message.clean_content.lower()):
+        logging.info("%s requested who's on", message.author)
         await whos_on(message)
     elif 'geomap' in message.clean_content.lower():
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
@@ -55,10 +56,12 @@ async def whos_on(message):
     )
     alone = True
     for member in members:
+        logging.debug('Getting response for %s', member)
         if member.bot or member == message.author:
             continue
-        resp = get_member_message(member)
+        resp = await get_member_message(member)
         if resp:
+            logging.debug('Got response %s', resp)
             alone = False
             embed.add_field(
                 name=resp['name'], value=resp['value'], inline=resp['inline'])
@@ -67,12 +70,15 @@ async def whos_on(message):
         embed.add_field(name='RIP',
                         value='Looks like no one is on. You\'re going to have to play alone.',
                         inline=False)
+    logging.debug('Sending embed')
     await message.channel.send(embed=embed)
+    logging.debug('Sent embed, deleting message')
     await message.delete()
+    logging.debug('Deleted message')
     return
 
 
-def get_member_message(member):
+async def get_member_message(member):
     """Handle field for individual members."""
     member_name = member.nick if member.nick else member.name
     field = None
@@ -80,7 +86,11 @@ def get_member_message(member):
         return None
     activities = member.activities
     (spot, game, stream, song, song_id, game_name, game_state,
-     stream_name, stream_game, stream_url) = handle_activities(activities)
+     stream_name, stream_game, stream_url) = await handle_activities(activities)
+    logging.debug('Handling member %s', member_name)
+    logging.debug('spot: %s, game: %s, stream: %s', spot, game, stream)
+    logging.debug('song: %s, song_id: %s, game_name: %s, game_state: %s',
+                  song, song_id, game_name, game_state)
     if game and spot and stream:
         field = {
             'name': member_name,
@@ -143,6 +153,7 @@ def get_member_message(member):
             'value': 'Invisible. They\'re probably watching TV',
             'inline': False
         }
+    logging.debug('Returning field %s', field)
     if field:
         return field
     return {
@@ -152,7 +163,7 @@ def get_member_message(member):
     }
 
 
-def handle_activities(activities):
+async def handle_activities(activities):
     """Handle activities."""
     spot = False
     game = False
@@ -161,6 +172,9 @@ def handle_activities(activities):
     song_id = ''
     game_name = ''
     game_state = ''
+    stream_name = None
+    stream_game = None
+    stream_url = None
     for act in activities:
         if isinstance(act, discord.activity.Spotify):
             spot = True
