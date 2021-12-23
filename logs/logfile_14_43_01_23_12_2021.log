@@ -1,0 +1,233 @@
+DEBUG:asyncio:Using selector: EpollSelector
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+DEBUG:discord.client:on_ready has successfully been registered as an event
+DEBUG:discord.client:on_message has successfully been registered as an event
+INFO:discord.client:logging in using static token
+DEBUG:discord.http:GET https://discord.com/api/v7/users/@me with None has returned 200
+DEBUG:discord.http:GET https://discord.com/api/v7/users/@me has received {'id': '828679681380712448', 'username': 'OnBot', 'avatar': 'e7d8c05a03d793b5ce4301e362b6c6f5', 'discriminator': '2908', 'public_flags': 0, 'flags': 0, 'bot': True, 'banner': None, 'banner_color': None, 'accent_color': None, 'bio': '', 'locale': 'en-US', 'mfa_enabled': True, 'email': None, 'verified': True}
+DEBUG:discord.http:GET https://discord.com/api/v7/gateway with None has returned 200
+DEBUG:discord.http:GET https://discord.com/api/v7/gateway has received {'url': 'wss://gateway.discord.gg'}
+DEBUG:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6&compress=zlib-stream
+DEBUG:discord.client:Dispatching event socket_raw_receive
+DEBUG:discord.gateway:For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 10, 'd': {'heartbeat_interval': 41250, '_trace': ['["gateway-prd-main-z7w9",{"micros":0.0}]']}}
+DEBUG:discord.client:Dispatching event socket_response
+DEBUG:discord.client:Dispatching event socket_raw_send
+DEBUG:discord.client:Dispatching event socket_raw_send
+INFO:discord.gateway:Shard ID None has sent the IDENTIFY payload.
+DEBUG:discord.client:Dispatching event socket_raw_receive
+DEBUG:discord.gateway:For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+DEBUG:discord.client:Dispatching event socket_response
+DEBUG:discord.client:Dispatching event socket_raw_receive
+DEBUG:discord.gateway:For Shard ID None: WebSocket Event: {'t': 'READY', 's': 1, 'op': 0, 'd': {'v': 6, 'user_settings': {}, 'user': {'verified': True, 'username': 'OnBot', 'mfa_enabled': True, 'id': '828679681380712448', 'flags': 0, 'email': None, 'discriminator': '2908', 'bot': True, 'avatar': 'e7d8c05a03d793b5ce4301e362b6c6f5'}, 'session_id': 'ef2b6c847289217410653b3eda615a03', 'relationships': [], 'private_channels': [], 'presences': [], 'guilds': [{'unavailable': True, 'id': '641507713733623829'}], 'guild_join_requests': [], 'geo_ordered_rtc_regions': ['us-central', 'newark', 'us-east', 'atlanta', 'us-south'], 'application': {'id': '828679681380712448', 'flags': 303104}, '_trace': ['["gateway-prd-main-z7w9",{"micros":87749,"calls":["discord-sessions-blue-prd-2-108",{"micros":79066,"calls":["start_session",{"micros":55666,"calls":["api-prd-main-x023",{"micros":49305,"calls":["get_user",{"micros":4806},"add_authorized_ip",{"micros":2629},"get_guilds",{"micros":4136},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":10692,"calls":[]}]}]}]']}}
+DEBUG:discord.client:Dispatching event socket_response
+INFO:discord.gateway:Shard ID None has connected to Gateway: ["gateway-prd-main-z7w9",{"micros":87749,"calls":["discord-sessions-blue-prd-2-108",{"micros":79066,"calls":["start_session",{"micros":55666,"calls":["api-prd-main-x023",{"micros":49305,"calls":["get_user",{"micros":4806},"add_authorized_ip",{"micros":2629},"get_guilds",{"micros":4136},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":10692,"calls":[]}]}]}] (Session ID: ef2b6c847289217410653b3eda615a03).
+DEBUG:discord.client:Dispatching event connect
+DEBUG:discord.client:Dispatching event socket_raw_receive
+DEBUG:discord.gateway:For Shard ID None: WebSocket Event: {'t': 'GUILD_CREATE', 's': 2, 'op': 0, 'd': {'region': 'deprecated', 'explicit_content_filter': 0, 'afk_timeout': 300, 'application_command_count': 1, 'system_channel_id': '641507713733623831', 'name': 'OG War Dogs', 'hub_type': None, 'description': None, 'public_updates_channel_id': None, 'owner_id': '198288155961589761', 'system_channel_flags': 0, 'application_id': None, 'members': [{'user': {'username': 'michigan224', 'id': '198288155961589761', 'discriminator': '5871', 'avatar': '1c209bb0fd3ad9f12eab3951ca701508'}, 'roles': ['829369240586682418', '896848243550478378', '905638744709795860', '858102254158610494'], 'nick': 'David', 'mute': False, 'joined_at': '2019-11-06T05:23:36.378000+00:00', 'hoisted_role': '858102254158610494', 'deaf': False}, {'user': {'username': 'Gif Your Game', 'public_flags': 65536, 'id': '342380641993752587', 'discriminator': '0663', 'bot': True, 'avatar': '5f80bd370b0470ec2c5fa2dc4ca76d56'}, 'roles': ['829367773653368873', '829369240586682418', '896834477928636436'], 'mute': False, 'joined_at': '2021-04-07T14:51:26.184000+00:00', 'hoisted_role': '896834477928636436', 'deaf': False}, {'user': {'username': 'Truhshy', 'id': '563906444768968714', 'discriminator': '2246', 'avatar': '5da6de1c2485514dbd71ad00fe514b10'}, 'roles': ['829369240586682418', '896848243550478378', '905638744709795860'], 'nick': 'Chris', 'mute': False, 'joined_at': '2019-11-06T05:24:23.840000+00:00', 'hoisted_role': '905638744709795860', 'deaf': False}, {'user': {'username': 'Atothej', 'id': '591855149018775572', 'discriminator': '4034', 'avatar': '3e9579545fe1c7bb04ea30c0e97093ed'}, 'roles': ['829369240586682418', '896848243550478378'], 'nick': 'Austin', 'mute': False, 'joined_at': '2021-01-30T07:27:24.954000+00:00', 'hoisted_role': '896848243550478378', 'deaf': False}, {'user': {'username': 'cameronthedestroyer69', 'id': '629143455871795212', 'discriminator': '6870', 'avatar': 'db8b2b934b629af5e31b4ccee26715bb'}, 'roles': ['829369240586682418', '896848243550478378'], 'nick': 'Cam', 'mute': False, 'joined_at': '2020-03-13T03:00:19.614000+00:00', 'hoisted_role': '896848243550478378', 'deaf': False}, {'user': {'username': 'michigan22413', 'id': '641507552722550786', 'discriminator': '1031', 'avatar': None}, 'roles': ['896848243550478378'], 'mute': False, 'joined_at': '2019-11-06T05:22:37.609000+00:00', 'hoisted_role': '896848243550478378', 'deaf': False}, {'user': {'username': 'Xander', 'id': '710568562955255859', 'discriminator': '0784', 'avatar': 'a8898abdc34eb87dd5efbe22bb8c8e48'}, 'roles': ['829369240586682418', '896848243550478378'], 'premium_since': None, 'pending': False, 'nick': None, 'mute': False, 'joined_at': '2020-08-18T01:27:26.213000+00:00', 'hoisted_role': '896848243550478378', 'deaf': False, 'communication_disabled_until': None, 'avatar': None}, {'user': {'username': 'OnBot', 'id': '828679681380712448', 'discriminator': '2908', 'bot': True, 'avatar': 'e7d8c05a03d793b5ce4301e362b6c6f5'}, 'roles': ['896834477928636436', '828680791122247711'], 'mute': False, 'joined_at': '2021-04-05T17:21:36.766000+00:00', 'hoisted_role': '896834477928636436', 'deaf': False}, {'user': {'username': 'Loom', 'id': '886634194967621653', 'discriminator': '7531', 'avatar': '0811bf1722d386f331bf188201d58d4e'}, 'roles': ['829369240586682418', '896848243550478378', '905638744709795860'], 'mute': False, 'joined_at': '2021-09-18T18:39:32.393000+00:00', 'hoisted_role': '905638744709795860', 'deaf': False}, {'user': {'username': 'Doplarr', 'id': '896531853358551080', 'discriminator': '0109', 'bot': True, 'avatar': 'dbee8151a299cab3952431cf4f11208d'}, 'roles': ['896834477928636436'], 'mute': False, 'joined_at': '2021-10-09T22:59:05.452000+00:00', 'hoisted_role': '896834477928636436', 'deaf': False}], 'mfa_level': 0, 'member_count': 10, 'banner': None, 'max_members': 250000, 'premium_subscription_count': 0, 'vanity_url_code': None, 'stickers': [], 'roles': [{'unicode_emoji': None, 'position': 0, 'permissions_new': '1071698665025', 'permissions': 104324673, 'name': '@everyone', 'mentionable': False, 'managed': False, 'id': '641507713733623829', 'icon': None, 'hoist': False, 'color': 0}, {'unicode_emoji': None, 'tags': {'bot_id': '828679681380712448'}, 'position': 6, 'permissions_new': '3221744704', 'permissions': 1074261056, 'name': 'OnBot', 'mentionable': False, 'managed': True, 'id': '828680791122247711', 'icon': None, 'hoist': False, 'color': 0}, {'unicode_emoji': None, 'tags': {'bot_id': '342380641993752587'}, 'position': 5, 'permissions_new': '19456', 'permissions': 19456, 'name': 'Gif Your Game', 'mentionable': False, 'managed': True, 'id': '829367773653368873', 'icon': None, 'hoist': False, 'color': 0}, {'unicode_emoji': None, 'position': 4, 'permissions_new': '6546775617', 'permissions': 104324673, 'name': 'Clips', 'mentionable': False, 'managed': False, 'id': '829369240586682418', 'icon': None, 'hoist': False, 'color': 0}, {'unicode_emoji': None, 'tags': {'premium_subscriber': None}, 'position': 7, 'permissions_new': '109625990721', 'permissions': 104324673, 'name': 'Server Booster', 'mentionable': False, 'managed': True, 'id': '852735420034842656', 'icon': None, 'hoist': False, 'color': 16023551}, {'unicode_emoji': None, 'position': 8, 'permissions_new': '111668625399', 'permissions': 2146959351, 'name': 'Owner', 'mentionable': False, 'managed': False, 'id': '858102254158610494', 'icon': None, 'hoist': True, 'color': 10181046}, {'unicode_emoji': None, 'position': 1, 'permissions_new': '1071698665025', 'permissions': 104324673, 'name': 'Bot', 'mentionable': False, 'managed': False, 'id': '896834477928636436', 'icon': None, 'hoist': True, 'color': 3447003}, {'unicode_emoji': None, 'position': 2, 'permissions_new': '1071698665025', 'permissions': 104324673, 'name': 'Gamers', 'mentionable': False, 'managed': False, 'id': '896848243550478378', 'icon': None, 'hoist': True, 'color': 3066993}, {'unicode_emoji': None, 'position': 3, 'permissions_new': '0', 'permissions': 0, 'name': 'GC', 'mentionable': False, 'managed': False, 'id': '905638744709795860', 'icon': None, 'hoist': True, 'color': 15844367}], 'rules_channel_id': None, 'icon': '651f237221944a4b3f016a81b8d71286', 'unavailable': False, 'application_command_counts': {'3': 0, '2': 0, '1': 1}, 'joined_at': '2021-04-05T17:21:36.766000+00:00', 'premium_progress_bar_enabled': False, 'splash': None, 'guild_scheduled_events': [], 'preferred_locale': 'en-US', 'emojis': [{'roles': [], 'require_colons': True, 'name': 'paintman', 'managed': False, 'id': '859499560854093874', 'available': True, 'animated': False}, {'roles': [], 'require_colons': True, 'name': 'kowalskisanta', 'managed': False, 'id': '859499601878712321', 'available': True, 'animated': False}, {'roles': [], 'require_colons': True, 'name': 'stuartlittlegrin', 'managed': False, 'id': '859499619695460382', 'available': True, 'animated': False}, {'roles': [], 'require_colons': True, 'name': 'LilUziBert', 'managed': False, 'id': '859499641338331196', 'available': True, 'animated': False}, {'roles': [], 'require_colons': True, 'name': 'iceagebaby', 'managed': False, 'id': '859499654148522034', 'available': True, 'animated': False}], 'verification_level': 0, 'threads': [], 'nsfw': False, 'presences': [{'user': {'id': '342380641993752587'}, 'status': 'online', 'game': None, 'client_status': {'web': 'online'}, 'activities': []}, {'user': {'id': '563906444768968714'}, 'status': 'online', 'game': {'type': 0, 'timestamps': {'start': 1640288396192}, 'session_id': None, 'name': 'NoxPlayer', 'id': '17d0a75e68833be', 'created_at': 1640288395238, 'application_id': '457301824110723113'}, 'client_status': {'desktop': 'online'}, 'activities': [{'type': 0, 'timestamps': {'start': 1640288396192}, 'name': 'NoxPlayer', 'id': '17d0a75e68833be', 'created_at': 1640288395238, 'application_id': '457301824110723113'}]}, {'user': {'id': '710568562955255859'}, 'status': 'idle', 'game': {'type': 4, 'state': "what's crackin", 'session_id': None, 'name': 'Custom Status', 'id': 'custom', 'created_at': 1640284645070}, 'client_status': {'desktop': 'idle'}, 'activities': [{'type': 4, 'state': "what's crackin", 'name': 'Custom Status', 'id': 'custom', 'created_at': 1640284645070}]}, {'user': {'id': '828679681380712448'}, 'status': 'online', 'game': {'type': 2, 'session_id': None, 'name': 'you monkey brains', 'id': 'ec0b28a579ecb4bd', 'created_at': 1640288580097}, 'client_status': {'web': 'online'}, 'activities': [{'type': 2, 'name': 'you monkey brains', 'id': 'ec0b28a579ecb4bd', 'created_at': 1640288580097}]}, {'user': {'id': '886634194967621653'}, 'status': 'idle', 'game': {'type': 4, 'state': 'step ladder', 'session_id': None, 'name': 'Custom Status', 'id': 'custom', 'created_at': 1640284068555}, 'client_status': {'desktop': 'idle'}, 'activities': [{'type': 4, 'state': 'step ladder', 'name': 'Custom Status', 'id': 'custom', 'created_at': 1640284068555}]}, {'user': {'id': '896531853358551080'}, 'status': 'online', 'game': None, 'client_status': {'web': 'online'}, 'activities': []}], 'stage_instances': [], 'premium_tier': 0, 'discovery_splash': None, 'id': '641507713733623829', 'large': False, 'lazy': True, 'voice_states': [], 'features': [], 'afk_channel_id': None, 'channels': [{'type': 4, 'position': 0, 'permission_overwrites': [], 'name': 'Text Channels', 'id': '641507713733623830'}, {'type': 0, 'topic': None, 'rate_limit_per_user': 0, 'position': 0, 'permission_overwrites': [], 'parent_id': '641507713733623830', 'name': 'general', 'last_message_id': '909290620026241055', 'id': '641507713733623831'}, {'type': 4, 'position': 0, 'permission_overwrites': [], 'name': 'Voice Channels', 'id': '641507713733623832'}, {'user_limit': 0, 'type': 2, 'rtc_region': None, 'rate_limit_per_user': 0, 'position': 0, 'permission_overwrites': [], 'parent_id': '641507713733623832', 'name': 'General Voice Chat', 'last_message_id': None, 'id': '641507713733623833', 'bitrate': 96000}, {'type': 0, 'topic': None, 'rate_limit_per_user': 0, 'position': 2, 'permission_overwrites': [{'type': 'role', 'id': '641507713733623829', 'deny_new': '1024', 'deny': 1024, 'allow_new': '0', 'allow': 0}], 'parent_id': '641507713733623830', 'name': 'personal', 'last_message_id': '920865625994313769', 'id': '718504782318534677'}, {'type': 0, 'topic': None, 'rate_limit_per_user': 0, 'position': 3, 'permission_overwrites': [{'type': 'role', 'id': '641507713733623829', 'deny_new': '0', 'deny': 0, 'allow_new': '1024', 'allow': 1024}], 'parent_id': '641507713733623830', 'nsfw': False, 'name': 'game-chat', 'last_pin_timestamp': '2021-10-27T21:38:30+00:00', 'last_message_id': '923397923063099444', 'id': '760666380613320704', 'banner': None}, {'type': 0, 'topic': None, 'rate_limit_per_user': 0, 'position': 5, 'permission_overwrites': [], 'parent_id': '641507713733623830', 'name': 'bot-commands', 'last_message_id': '922199141415800853', 'id': '804483035516633098'}, {'user_limit': 0, 'type': 2, 'rtc_region': None, 'rate_limit_per_user': 0, 'position': 1, 'permission_overwrites': [], 'parent_id': '641507713733623832', 'name': 'Gamers', 'last_message_id': None, 'id': '822576388316856340', 'bitrate': 96000}, {'user_limit': 0, 'type': 2, 'rtc_region': None, 'rate_limit_per_user': 0, 'position': 4, 'permission_overwrites': [], 'parent_id': '641507713733623832', 'name': 'HW Grind', 'last_message_id': None, 'id': '823614187053645824', 'bitrate': 96000}, {'type': 0, 'topic': None, 'rate_limit_per_user': 0, 'position': 7, 'permission_overwrites': [{'type': 'role', 'id': '641507713733623829', 'deny_new': '0', 'deny': 0, 'allow_new': '0', 'allow': 0}], 'parent_id': '641507713733623830', 'name': 'clips', 'last_message_id': '923116915155681281', 'id': '829367945829810176'}, {'type': 0, 'topic': None, 'rate_limit_per_user': 0, 'position': 8, 'permission_overwrites': [{'type': 'role', 'id': '641507713733623829', 'deny_new': '1024', 'deny': 1024, 'allow_new': '0', 'allow': 0}], 'parent_id': '641507713733623830', 'name': 'downloads', 'last_message_id': '922344111833505833', 'id': '853813119565824020'}], 'default_message_notifications': 0, 'max_video_channel_users': 25, 'nsfw_level': 0, 'guild_hashes': {'version': 1, 'roles': {'omitted': False, 'hash': 'Pjm1Ce6i+UU'}, 'metadata': {'omitted': False, 'hash': 'xsnEbL2lToY'}, 'channels': {'omitted': False, 'hash': 'E+tdp2wcNpE'}}, 'embedded_activities': []}}
+DEBUG:discord.client:Dispatching event socket_response
+DEBUG:discord.client:Dispatching event guild_available
+DEBUG:discord.client:Dispatching event ready
+DEBUG:discord.client:Dispatching event socket_raw_receive
+DEBUG:discord.gateway:For Shard ID None: WebSocket Event: {'t': 'MESSAGE_CREATE', 's': 3, 'op': 0, 'd': {'type': 0, 'tts': False, 'timestamp': '2021-12-23T19:43:19.946000+00:00', 'referenced_message': None, 'pinned': False, 'nonce': '923662082950299648', 'mentions': [], 'mention_roles': [], 'mention_everyone': False, 'member': {'roles': ['829369240586682418', '896848243550478378', '905638744709795860', '858102254158610494'], 'nick': 'David', 'mute': False, 'joined_at': '2019-11-06T05:23:36.378000+00:00', 'hoisted_role': '858102254158610494', 'deaf': False}, 'id': '923662076906442792', 'flags': 0, 'embeds': [], 'edited_timestamp': None, 'content': 'string. With. Punctuation?', 'components': [], 'channel_id': '804483035516633098', 'author': {'username': 'michigan224', 'public_flags': 0, 'id': '198288155961589761', 'discriminator': '5871', 'avatar': '1c209bb0fd3ad9f12eab3951ca701508'}, 'attachments': [], 'guild_id': '641507713733623829'}}
+DEBUG:discord.client:Dispatching event socket_response
+DEBUG:discord.client:Dispatching event message
+INFO:root:michigan224#5871 sent 'string. With. Punctuation?'
+DEBUG:discord.gateway:Keeping shard ID None websocket alive with sequence 3.
+WARNING:discord.gateway:Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "onBot.py", line 179, in <module>
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 713, in run
+    loop.run_forever()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
+    handle._run()
+  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
+    self._context.run(self._callback, *self._args)
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 343, in _run_event
+    await coro(*args, **kwargs)
+  File "onBot.py", line 34, in on_message
+    return
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/member.py", line 235, in __eq__
+    def __eq__(self, other):
+  File "/usr/lib/python3.8/bdb.py", line 90, in trace_dispatch
+    return self.dispatch_call(frame, arg)
+  File "/usr/lib/python3.8/bdb.py", line 134, in dispatch_call
+    self.user_call(frame, arg)
+  File "/usr/lib/python3.8/pdb.py", line 252, in user_call
+    self.interaction(frame, None)
+  File "/usr/lib/python3.8/pdb.py", line 357, in interaction
+    self._cmdloop()
+  File "/usr/lib/python3.8/pdb.py", line 322, in _cmdloop
+    self.cmdloop()
+  File "/usr/lib/python3.8/cmd.py", line 126, in cmdloop
+    line = input(self.prompt)
+
+WARNING:discord.gateway:Shard ID None heartbeat blocked for more than 20 seconds.
+Loop thread traceback (most recent call last):
+  File "onBot.py", line 179, in <module>
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 713, in run
+    loop.run_forever()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
+    handle._run()
+  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
+    self._context.run(self._callback, *self._args)
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 343, in _run_event
+    await coro(*args, **kwargs)
+  File "onBot.py", line 37, in on_message
+    str.maketrans('', '', string.punctuation))
+  File "/usr/lib/python3.8/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/usr/lib/python3.8/bdb.py", line 112, in dispatch_line
+    self.user_line(frame)
+  File "/usr/lib/python3.8/pdb.py", line 262, in user_line
+    self.interaction(frame, None)
+  File "/usr/lib/python3.8/pdb.py", line 357, in interaction
+    self._cmdloop()
+  File "/usr/lib/python3.8/pdb.py", line 322, in _cmdloop
+    self.cmdloop()
+  File "/usr/lib/python3.8/cmd.py", line 126, in cmdloop
+    line = input(self.prompt)
+
+WARNING:discord.gateway:Shard ID None heartbeat blocked for more than 30 seconds.
+Loop thread traceback (most recent call last):
+  File "onBot.py", line 179, in <module>
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 713, in run
+    loop.run_forever()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
+    handle._run()
+  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
+    self._context.run(self._callback, *self._args)
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 343, in _run_event
+    await coro(*args, **kwargs)
+  File "onBot.py", line 38, in on_message
+    msg = re.split(",|\s|’", message.clean_content.lower())
+  File "/usr/lib/python3.8/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/usr/lib/python3.8/bdb.py", line 112, in dispatch_line
+    self.user_line(frame)
+  File "/usr/lib/python3.8/pdb.py", line 262, in user_line
+    self.interaction(frame, None)
+  File "/usr/lib/python3.8/pdb.py", line 357, in interaction
+    self._cmdloop()
+  File "/usr/lib/python3.8/pdb.py", line 322, in _cmdloop
+    self.cmdloop()
+  File "/usr/lib/python3.8/cmd.py", line 126, in cmdloop
+    line = input(self.prompt)
+
+WARNING:discord.gateway:Shard ID None heartbeat blocked for more than 40 seconds.
+Loop thread traceback (most recent call last):
+  File "onBot.py", line 179, in <module>
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 713, in run
+    loop.run_forever()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
+    handle._run()
+  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
+    self._context.run(self._callback, *self._args)
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 343, in _run_event
+    await coro(*args, **kwargs)
+  File "onBot.py", line 38, in on_message
+    msg = re.split(",|\s|’", message.clean_content.lower())
+  File "/usr/lib/python3.8/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/usr/lib/python3.8/bdb.py", line 112, in dispatch_line
+    self.user_line(frame)
+  File "/usr/lib/python3.8/pdb.py", line 262, in user_line
+    self.interaction(frame, None)
+  File "/usr/lib/python3.8/pdb.py", line 357, in interaction
+    self._cmdloop()
+  File "/usr/lib/python3.8/pdb.py", line 322, in _cmdloop
+    self.cmdloop()
+  File "/usr/lib/python3.8/cmd.py", line 126, in cmdloop
+    line = input(self.prompt)
+
+WARNING:discord.gateway:Shard ID None heartbeat blocked for more than 50 seconds.
+Loop thread traceback (most recent call last):
+  File "onBot.py", line 179, in <module>
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 713, in run
+    loop.run_forever()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
+    handle._run()
+  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
+    self._context.run(self._callback, *self._args)
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 343, in _run_event
+    await coro(*args, **kwargs)
+  File "onBot.py", line 37, in on_message
+    str.maketrans('', '', string.punctuation))
+  File "/usr/lib/python3.8/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/usr/lib/python3.8/bdb.py", line 112, in dispatch_line
+    self.user_line(frame)
+  File "/usr/lib/python3.8/pdb.py", line 262, in user_line
+    self.interaction(frame, None)
+  File "/usr/lib/python3.8/pdb.py", line 357, in interaction
+    self._cmdloop()
+  File "/usr/lib/python3.8/pdb.py", line 322, in _cmdloop
+    self.cmdloop()
+  File "/usr/lib/python3.8/cmd.py", line 126, in cmdloop
+    line = input(self.prompt)
+
+WARNING:discord.gateway:Shard ID None heartbeat blocked for more than 60 seconds.
+Loop thread traceback (most recent call last):
+  File "onBot.py", line 179, in <module>
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 713, in run
+    loop.run_forever()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1859, in _run_once
+    handle._run()
+  File "/usr/lib/python3.8/asyncio/events.py", line 81, in _run
+    self._context.run(self._callback, *self._args)
+  File "/mnt/d/Desktop/My Stuff/Python Projects/OnBot/env/lib/python3.8/site-packages/discord/client.py", line 343, in _run_event
+    await coro(*args, **kwargs)
+  File "onBot.py", line 39, in on_message
+    await whosOn(message)
+  File "/usr/lib/python3.8/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/usr/lib/python3.8/bdb.py", line 112, in dispatch_line
+    self.user_line(frame)
+  File "/usr/lib/python3.8/pdb.py", line 262, in user_line
+    self.interaction(frame, None)
+  File "/usr/lib/python3.8/pdb.py", line 357, in interaction
+    self._cmdloop()
+  File "/usr/lib/python3.8/pdb.py", line 322, in _cmdloop
+    self.cmdloop()
+  File "/usr/lib/python3.8/cmd.py", line 126, in cmdloop
+    line = input(self.prompt)
+
+INFO:discord.gateway:Timed out receiving packet. Attempting a reconnect.
+INFO:discord.client:Got a request to RESUME the websocket.
+DEBUG:discord.client:Dispatching event disconnect
+DEBUG:discord.http:GET https://discord.com/api/v7/gateway with None has returned 200
+DEBUG:discord.http:GET https://discord.com/api/v7/gateway has received {'url': 'wss://gateway.discord.gg'}
+DEBUG:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6&compress=zlib-stream
+DEBUG:discord.client:Dispatching event socket_raw_receive
+DEBUG:discord.gateway:For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 10, 'd': {'heartbeat_interval': 41250, '_trace': ['["gateway-prd-main-42dv",{"micros":0.0}]']}}
+DEBUG:discord.client:Dispatching event socket_response
+DEBUG:discord.client:Dispatching event socket_raw_send
+DEBUG:discord.client:Dispatching event socket_raw_send
+INFO:discord.gateway:Shard ID None has sent the RESUME payload.
+DEBUG:discord.client:Dispatching event socket_raw_receive
+DEBUG:discord.gateway:For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+DEBUG:discord.client:Dispatching event socket_response
+DEBUG:discord.client:Dispatching event socket_raw_receive
+DEBUG:discord.gateway:For Shard ID None: WebSocket Event: {'t': 'PRESENCE_UPDATE', 's': 4, 'op': 0, 'd': {'user': {'username': 'cameronthedestroyer69', 'id': '629143455871795212', 'discriminator': '6870', 'avatar': 'db8b2b934b629af5e31b4ccee26715bb'}, 'status': 'dnd', 'roles': ['829369240586682418', '896848243550478378'], 'nick': 'Cam', 'guild_id': '641507713733623829', 'game': None, 'client_status': {'desktop': 'dnd'}, 'activities': []}}
+DEBUG:discord.client:Dispatching event socket_response
+DEBUG:discord.client:Dispatching event member_update
+DEBUG:discord.client:Dispatching event socket_raw_receive
+DEBUG:discord.gateway:For Shard ID None: WebSocket Event: {'t': 'RESUMED', 's': 5, 'op': 0, 'd': {'_trace': ['["gateway-prd-main-42dv",{"micros":2575,"calls":["discord-sessions-blue-prd-2-108",{"micros":31}]}]']}}
+DEBUG:discord.client:Dispatching event socket_response
+INFO:discord.gateway:Shard ID None has successfully RESUMED session ef2b6c847289217410653b3eda615a03 under trace ["gateway-prd-main-42dv",{"micros":2575,"calls":["discord-sessions-blue-prd-2-108",{"micros":31}]}].
+DEBUG:discord.client:Dispatching event resumed
+INFO:discord.client:Cleaning up tasks.
+INFO:discord.client:Cleaning up after 1 tasks.
+INFO:discord.client:All tasks finished cancelling.
+INFO:discord.client:Closing the event loop.

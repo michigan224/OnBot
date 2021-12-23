@@ -1,19 +1,13 @@
+"""Personal discord bot."""
+import logging
+import os
+import string
 from datetime import datetime
+
 import discord
 from dotenv import load_dotenv
-import os
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
-from imdb import IMDb
-from pycliarr.api import RadarrCli, SonarrCli
-from datetime import date, datetime
-import json
-import requests
-import re
-import logging
 
 load_dotenv()
-ia = IMDb()
 
 if not os.path.exists('logs'):
     os.makedirs('logs')
@@ -21,11 +15,6 @@ LOG_FILENAME = datetime.now().strftime('./logs/logfile_%H_%M_%S_%d_%m_%Y.log')
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
 logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG)
-
-SPOTIPY_CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID')
-SPOTIPY_CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET')
-radarr_cli = RadarrCli('http://192.168.4.63:7878', os.getenv('RADARR_API_KEY'))
-sonarr_cli = SonarrCli('http://192.168.4.63:8989', os.getenv('SONARR_API_KEY'))
 
 intents = discord.Intents.all()
 activity = discord.Activity(
@@ -35,453 +24,167 @@ client = discord.Client(intents=intents, activity=activity)
 
 @client.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+    """Logs when the bot is ready."""
+    print(f'We have logged in as {client.user}')
+    logging.info('We have logged in as %s', client.user)
 
 
 @client.event
 async def on_message(message):
-    breakpoint()
-    logging.info(f"{message.author} sent '{message.content}'")
+    """Handles a message."""
+    logging.info("%s sent '%s'", message.author, message.content)
     if message.author == client.user:
         return
-    msg = re.split(",|\s|’", message.clean_content.lower())
-    if (('who' in msg or 'whos' in msg) and 'on' in msg) or 'whoson' in msg or 'whose on' in message.clean_content.lower():
-        await whosOn(message)
-    elif 'more like' in message.clean_content.lower():
-        playlist = message.clean_content.replace('more like ', '')
-        await message.channel.send('If you liked songs from %s, then you might also like these:' % (playlist))
-        for el in moreLike(playlist):  # , name):
-            await message.channel.send(el)
-    elif 'request movie' in message.clean_content.lower():
-        req = message.clean_content.lower().replace('request movie ', '')
-        # await requestMovie(req.lower(), message)
-    elif 'request series' in message.clean_content.lower():
-        req = message.clean_content.lower().replace('request series ', '')
-        # await requestSeries(req.lower(), message)
+    msg = message.clean_content.lower().translate(
+        str.maketrans('', '', string.punctuation)).split()
+    logging.info("Split message: %s", msg)
+    if ((('who' in msg or 'whos' in msg) and 'on' in msg)
+            or 'whoson' in msg or 'whose on' in message.clean_content.lower()):
+        await whos_on(message)
     elif 'geomap' in message.clean_content.lower():
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
         await message.delete()
-    elif 'newdrops' in message.clean_content.lower():
-        drops = getDrops()
-        for artist, song in drops:
-            print('%s most recent drop is %s' % (artist, song))
-            await message.channel.send('%s most recent drop is %s' % (artist, song))
-        await message.delete()
-    elif 'whip' == message.clean_content.lower():
-        await getCarETA(message)
 
 
-async def whosOn(message):
-    author = message.author.mention
+async def whos_on(message):
+    """Sends a message with the users that are on."""
     members = message.channel.members
-    messageOut = (
-        'Ok %s. Since it\'s so hard to look yourself i\'ll look for you' % (author))
     embed = discord.Embed(
         title="Who's on?",
         colour=discord.Colour.blue()
     )
-    memids = []
-    off = []
+    alone = True
     for member in members:
-        active = False
-        spot = False
-        game = False
-        stream = False
-        song = ''
-        songID = ''
-        gName = ''
-        gState = ''
-        if not member.bot and member != message.author:
-            memberName = member.nick if member.nick else member.name
-            if member.status != discord.Status.offline:
-                memids.append(member.id)
-                activities = member.activities
-                for act in activities:
-                    if isinstance(act, discord.activity.Spotify):
-                        spot = True
-                        song = act.title
-                        songID = act.track_id
-                    if isinstance(act, discord.activity.Activity):
-                        game = True
-                        gName = act.name
-                        gState = act.state
-                        gState = f" ({gState})" if gState else ''
-                    if isinstance(act, discord.activity.Game):
-                        game = True
-                        gName = act.name
-                        gState = act.state
-                        gState = f" ({gState})" if gState else ''
-                    if isinstance(act, discord.activity.Streaming):
-                        stream = True
-                        sName = act.twitch_name
-                        sGame = act.game
-                        sURL = act.url
-                    if isinstance(act, discord.activity.CustomActivity):
-                        print(act)
-                if game and spot and stream:
-                    embed.add_field(name=memberName,
-                                    value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing Rocket{gState} and streaming [here]({sURL})', inline=False)
-                elif game and spot:
-                    if gName == 'Rocket League':
-                        active = True
-                        embed.add_field(name=memberName,
-                                        value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing Rocket{gState}', inline=False)
-                        messageOut += ('\n**%s** is listening to %s while playing Rocket' %
-                                       (memberName, song))
-
-                    elif gName == 'Fortnite':
-                        active = True
-                        embed.add_field(name=memberName,
-                                        value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing Fortnite{gState}', inline=False)
-                        messageOut += ('\n**%s** is listening to %s while playing Fornite' %
-                                       (memberName, song))
-                    else:
-                        active = True
-                        embed.add_field(name=memberName,
-                                        value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae) while playing {gName}{gState}', inline=False)
-                        messageOut += ('\n**%s** is listening to %s while playing %s' %
-                                       (memberName, song, gName))
-                    messageOut += (
-                        '\nYou can listen here: https://open.spotify.com/track/%s' % (songID))
-                elif stream and spot:
-                    active = True
-                    embed.add_field(name=sName,
-                                    value=f'Streaming {sGame} at {sURL} while listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae)', inline=False)
-                    messageOut += ('\n**%s** is streaming %s at %s while listening to %s' %
-                                   (sName, sGame, sURL, song))
-                    messageOut += (
-                        '\nYou can listen here: https://open.spotify.com/track/%s' % (songID))
-                elif spot:
-                    active = True
-                    embed.add_field(name=memberName,
-                                    value=f'Listening to [{song}](https://open.spotify.com/track/{songID}?si=9e2a90467def41ae)', inline=False)
-                    messageOut += ('\n**%s** is listening to %s' %
-                                   (memberName, song))
-                    messageOut += (
-                        '\nYou can listen here: https://open.spotify.com/track/%s' % (songID))
-                elif game:
-                    active = True
-                    embed.add_field(name=memberName,
-                                    value=f'Playing {gName}{gState}', inline=False)
-                    messageOut += ('\n**%s** is playing %s' %
-                                   (memberName, gName))
-                elif stream:
-                    active = True
-                    embed.add_field(name=sName,
-                                    value=f'Streaming {sGame}{gState} at {sURL}', inline=False)
-                    messageOut += ('\n**%s** is streaming %s at %s' %
-                                   (sName, sGame, sURL))
-                else:
-                    active = True
-                    embed.add_field(name=memberName,
-                                    value=f'Online but not doing anything', inline=False)
-                    messageOut += ('\n**%s** is online but isn\'t doing anything' %
-                                   (memberName))
-            else:
-                off.append(member.name)
-            if member.status == discord.Status.idle and not active:
-                embed.add_field(name=memberName,
-                                value=f'Idle like a loser. Either get on or get off, jesus.', inline=False)
-                messageOut += (
-                    '\n**%s** is idle like a loser. Either get on or get off, jesus.' % (memberName))
-            if member.status == discord.Status.dnd and not active:
-                embed.add_field(name=memberName,
-                                value=f'Doesn\'t want to be disturbed.', inline=False)
-                messageOut += ('\n**%s** doesn\'t want to be disturbed.' %
-                               (memberName))
-            if member.status == discord.Status.invisible and not active:
-                embed.add_field(name=memberName,
-                                value=f'Invisible. They\'re probably watching TV', inline=False)
-                messageOut += ('\n**%s** is invisible. They\'re probably watching TV' %
-                               (memberName))
-    if messageOut == 'Ok %s. Since it\'s so hard to look yourself i\'ll look for you' % (author):
-        await message.channel.send(messageOut + '\nLooks like no one is on. You\'re going to have to play alone.')
-        await message.delete()
-        return
+        if member.bot or member == message.author:
+            continue
+        resp = get_member_message(member)
+        if resp:
+            alone = False
+            embed.add_field(
+                name=resp['name'], value=resp['value'], inline=resp['inline'])
+            continue
+    if alone:
+        embed.add_field(name='RIP',
+                        value='Looks like no one is on. You\'re going to have to play alone.',
+                        inline=False)
     await message.channel.send(embed=embed)
     await message.delete()
     return
 
 
-# async def requestMovie(req, message):
-    d = date.today()
-    conn = mariadb.connect(
-        user=os.getenv('MARIA_DB_USER'),
-        password=os.getenv('MARIA_DB_PASS'),
-        host="192.168.4.63",
-        port=3306,
-        database="tron_db"
-    )
-    cursor = conn.cursor()
-    cursor.execute(
-        "INSERT INTO Requests (Movies,Series,Requested,Date) VALUES (?, ?, ?, ?)", (req, "", message.author.name, d))
-    conn.commit()
-    conn.close()
-    movie = ''
-    movies = []
-    if isinstance(req, int):
-        movie = ia.get_movie(req)
-        metadata = radarr_cli.lookup_movie(imdb_id=req)._data
-        metadata = json.dumps(metadata, indent=4)
-        d = date.today()
-        auth = message.author.name
-
-        try:
-            radarr_cli.add_movie(imdb_id=req, quality=4)
-            await message.channel.send(f'{movie} was successfully added. It should be downloaded and imported soon!')
-            conn = mariadb.connect(
-                user=os.getenv('MARIA_DB_USER'),
-                password=os.getenv('MARIA_DB_PASS'),
-                host="192.168.4.63",
-                port=3306,
-                database="tron_db"
-            )
-            cursor = conn.cursor()
-            cursor.execute(
-                "INSERT INTO Movies (metadata,requested,date) VALUES (?, ?, ?)",
-                (metadata, auth, d))
-            conn.commit()
-            conn.close()
-            return
-        except Exception as e:
-            print(e)
-            await message.channel.send('Movie already on Plex. If not ask David idk gosh man')
-            return
-    else:
-        movies = ia.search_movie(req)
-        temp = []
-        for el in movies:
-            if(el.data['kind'] == 'movie'):
-                temp.append(el)
-        movies = temp[:6]
-        movieTitles = [el.data['title'] for el in movies]
-        movieIDs = [el.movieID for el in movies]
-
-        if not movies and not movie:
-            await message.channel.send('Could not find the given movie. Check [imdb](https://www.imdb.com/)')
-            return
-
-        embed = discord.Embed(title='Please react with the correct one')
-        emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣',
-                  '7️⃣', '8️⃣', '9️⃣', '🔟', '❌']
-        for i in range(len(movies)):
-            embed.add_field(
-                name=emojis[i], value=f'[{movieTitles[i]}](https://www.imdb.com/title/tt{movieIDs[i]}/)')
-
-        embed.add_field(name='If you can\'t find what you\'re looking for click the X and Try again with the ID from,',
-                        value='[imdb](https://www.imdb.com/)', inline=False)
-        embed.set_thumbnail(url=movies[0].data['cover url'])
-
-        mess1 = await message.channel.send(embed=embed)
-        for i in range(len(movies)):
-            await mess1.add_reaction(emojis[i])
-
-        await mess1.add_reaction('❌')
-
-        def check(reaction, user):
-            return reaction.message.id == mess1.id and (emojis.index(reaction.emoji) != -1) and user == message.author
-
-        reaction = await client.wait_for('reaction_add', check=check)
-        if reaction[0].emoji == '❌':
-            await message.channel.send('Please be more descriptive or try with the IMDB ID')
-            return
-        movie = movies[emojis.index(reaction[0].emoji)]
-        metadata = radarr_cli.lookup_movie(imdb_id=movie.movieID)._data
-        metadata = json.dumps(metadata, indent=4)
-        auth = message.author.name
-
-        try:
-            radarr_cli.add_movie(imdb_id=movie.movieID, quality=4)
-            await message.channel.send(f'{movie} was successfully added. It should be downloaded and imported soon!')
-            conn = mariadb.connect(
-                user=os.getenv('MARIA_DB_USER'),
-                password=os.getenv('MARIA_DB_PASS'),
-                host="192.168.4.63",
-                port=3306,
-                database="tron_db"
-            )
-            cursor = conn.cursor()
-            cursor.execute(
-                "INSERT INTO Movies (metadata,requested,date) VALUES (?, ?, ?)",
-                (metadata, auth, d))
-            conn.commit()
-            conn.close()
-            return
-        except Exception as e:
-            print(e)
-            await message.channel.send('Movie already on Plex. If not ask David idk gosh man')
-            return
+def get_member_message(member):
+    """Handle field for individual members."""
+    member_name = member.nick if member.nick else member.name
+    field = None
+    if member.status == discord.Status.offline:
+        return None
+    activities = member.activities
+    (spot, game, stream, song, song_id, game_name, game_state,
+     stream_name, stream_game, stream_url) = handle_activities(activities)
+    if game and spot and stream:
+        field = {
+            'name': member_name,
+            'value': (f'Listening to [{song}](https://open.spotify.com/track/'
+                      f'{song_id}?si=9e2a90467def41ae) while playing Rocket'
+                      f'{game_state} and streaming [here]({stream_url})'),
+            'inline': False
+        }
+    if game and spot:
+        field = {
+            'name': member_name,
+            'value': (f'Listening to [{song}]'
+                      f'(https://open.spotify.com/track/{song_id}'
+                      f'?si=9e2a90467def41ae)'
+                      f'while playing {game_name}{game_state}'),
+            'inline': False
+        }
+    if stream and spot:
+        field = {
+            'name': stream_name,
+            'value': (f'Streaming {stream_game} at {stream_url} while listening to [{song}]'
+                      f'(https://open.spotify.com/track/{song_id}'
+                      f'?si=9e2a90467def41ae)'),
+            'inline': False
+        }
+    if spot:
+        field = {
+            'name': member_name,
+            'value': (f'Listening to [{song}](https://open.spotify.com/track/'
+                      f'{song_id}?si=9e2a90467def41ae)'),
+            'inline': False
+        }
+    if game:
+        field = {
+            'name': member_name,
+            'value': f'Playing {game_name}{game_state}',
+            'inline': False
+        }
+    if stream:
+        field = {
+            'name': stream_name,
+            'value': f'Streaming {stream_game}{game_state} at {stream_url}',
+            'inline': False
+        }
+    if member.status == discord.Status.idle:
+        field = {
+            'name': member_name,
+            'value': 'Idle like a loser. Either get on or get off, jesus.',
+            'inline': False
+        }
+    if member.status == discord.Status.dnd:
+        field = {
+            'name': member_name,
+            'value': 'Doesn\'t want to be disturbed.',
+            'inline': False
+        }
+    if member.status == discord.Status.invisible:
+        field = {
+            'name': member_name,
+            'value': 'Invisible. They\'re probably watching TV',
+            'inline': False
+        }
+    if field:
+        return field
+    return {
+        'name': member_name,
+        'value': 'Online but not doing anything',
+        'inline': False
+    }
 
 
-# async def requestSeries(req, message):
-    d = date.today()
-    conn = mariadb.connect(
-        user=os.getenv('MARIA_DB_USER'),
-        password=os.getenv('MARIA_DB_PASS'),
-        host="192.168.4.63",
-        port=3306,
-        database="tron_db"
-    )
-    cursor = conn.cursor()
-    cursor.execute(
-        "INSERT INTO Requests (Movies,Series,Requested,Date) VALUES (?, ?, ?, ?)", ("", req, message.author.name, d))
-    conn.commit()
-    conn.close()
-    res = sonarr_cli.lookup_serie(req)[:10]
-    found = []
-    titles = []
-    for el in res:
-        if el._data['tvdbId'] and el._data['tvdbId'] not in found:
-            found.append(el._data['tvdbId'])
-            titles.append(el._data['title'])
-    found = found[:6]
-    titles = titles[:6]
-
-    embed = discord.Embed(title='Please react with the correct one')
-    emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣',
-              '7️⃣', '8️⃣', '9️⃣', '🔟', '❌']
-    thumbnail = ''
-    for i in range(len(titles)):
-        url = 'https://api.tvmaze.com/lookup/shows?thetvdb=' + str(found[i])
-        r = requests.get(url)
-        if r.status_code == 200:
-            r = r.json()
-            if r['image'] and thumbnail == '':
-                for el in r['image']:
-                    if thumbnail == '':
-                        thumbnail = r['image'][el]
-            link = r['url']
-            embed.add_field(
-                name=emojis[i], value=f'[{titles[i]}]({link})')
-        else:
-            embed.add_field(
-                name=emojis[i], value=f'{titles[i]}')
-    embed.add_field(name='If you can\'t find what you\'re looking for click the X and Try again with the ID from,',
-                    value='[tvdb](https://thetvdb.com/)', inline=False)
-    if thumbnail != '':
-        embed.set_thumbnail(url=thumbnail)
-    mess1 = await message.channel.send(embed=embed)
-    for i in range(len(titles)):
-        await mess1.add_reaction(emojis[i])
-
-    await mess1.add_reaction('❌')
-
-    def check(reaction, user):
-        return reaction.message.id == mess1.id and (emojis.index(reaction.emoji) != -1) and user == message.author
-
-    reaction = await client.wait_for('reaction_add', check=check)
-    if reaction[0].emoji == '❌':
-        await message.channel.send('Please be more descriptive or try with the IMDB ID')
-        return
-    series = found[emojis.index(reaction[0].emoji)]
-    title = titles[emojis.index(reaction[0].emoji)]
-    metadata = sonarr_cli.lookup_serie(tvdb_id=series)._data
-    metadata = json.dumps(metadata, indent=4)
-    auth = message.author.name
-
-    try:
-        sonarr_cli.add_serie(tvdb_id=series, quality=6)
-        await message.channel.send(f'{title} was successfully added. It should be downloaded and imported soon!')
-        conn = mariadb.connect(
-            user=os.getenv('MARIA_DB_USER'),
-            password=os.getenv('MARIA_DB_PASS'),
-            host="192.168.4.63",
-            port=3306,
-            database="tron_db"
-        )
-        cursor = conn.cursor()
-        cursor.execute(
-            "INSERT INTO Series (metadata,requested,date) VALUES (?, ?, ?)",
-            (metadata, auth, d))
-        conn.commit()
-        conn.close()
-        return
-    except Exception as e:
-        print(e)
-        await message.channel.send('Series already on Plex. If not ask David idk gosh man')
-        return
-
-
-async def getCarETA(message):
-    vin = os.getenv('VIN')
-    orderNum = os.getenv('ORDER_NUMBER')
-    url = 'https://shop.ford.com/aemservices/shop/vot/api/customerorder/?orderNumber=' + \
-        orderNum + '&partAttributes=BP2_.*&vin=' + vin
-    r = requests.get(url)
-    r = r.json()[0]
-    etaStartDate = r['etaStartDate']
-    y, m, d = etaStartDate.split('-')
-    etaStartDate = datetime(int(y), int(m), int(d))
-    etaEndDate = r['etaEndDate']
-    y, m, d = etaEndDate.split('-')
-    etaEndDate = datetime(int(y), int(m), int(d))
-    currDate = datetime.today().strftime('%Y-%m-%d')
-    y, m, d = currDate.split('-')
-    currDate = datetime(int(y), int(m), int(d))
-
-    if etaStartDate > currDate and etaEndDate > currDate:
-        e = discord.Embed(title="2021 Ranger XLT",
-                          description="Estimated delivery date: **" + r['etaStartDate'] + ' - ' + r['etaEndDate'] + "**")
-    else:
-        e = discord.Embed(title="2021 Ranger XLT",
-                          description="Estimated delivery date not available.\nVehicle Status: **" + r['primaryStatus'] + "**")
-    e.set_image(url=os.getenv('IMAGE_URL'))
-    await message.channel.send(embed=e)
-
-
-def moreLike(playlistID):
-    client_credentials_manager = SpotifyClientCredentials(
-        client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET)
-    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-    songs = []
-    playlist = sp.playlist(playlistID)
-    for el in playlist['tracks']['items']:
-        songs.append(el['track']['uri'][14:])
-    print(songs)
-    recc = sp.recommendations(seed_tracks=songs, limit=5)
-    recs = []
-    for track in recc['tracks']:
-        recs.append(track['external_urls']['spotify'])
-    return recs
-
-
-def getLink(album, songID):
-    client_credentials_manager = SpotifyClientCredentials(
-        client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET)
-    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-    sp.trace = False
-
-    # find album by name
-    results = sp.search(q="album:" + album, type="album")
-
-    # get the first album uri
-    albumID = results['albums']['items'][0]['uri']
-    albumID = albumID[14:]
-    form = 'https://open.spotify.com/album/%s?highlight=spotify:track:%s' % (
-        albumID, songID)
-    print(form)
-    return form
-
-
-def getDrops():
-    client_credentials_manager = SpotifyClientCredentials(
-        client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET)
-    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-    sp.trace = False
-    drops = []
-    travID = 'spotify:artist:0Y5tJX1MQlPlqiwlOH1tJY'
-    thugID = 'spotify:artist:50co4Is1HCEo8bhOyUWKpn'
-
-    travSongs = sp.artist_albums(travID, album_type=None, country=None, limit=1)[
-        'items'][0]['external_urls']['spotify']
-    print(travSongs)
-    drops.append([sp.artist(travID)['name'], travSongs])
-    thugSongs = sp.artist_albums(thugID, album_type=None, country=None, limit=1)[
-        'items'][0]['external_urls']['spotify']
-    print(thugSongs)
-    drops.append([sp.artist(thugID)['name'], thugSongs])
-
-    return drops
+def handle_activities(activities):
+    """Handle activities."""
+    spot = False
+    game = False
+    stream = False
+    song = ''
+    song_id = ''
+    game_name = ''
+    game_state = ''
+    for act in activities:
+        if isinstance(act, discord.activity.Spotify):
+            spot = True
+            song = act.title
+            song_id = act.track_id
+        if isinstance(act, discord.activity.Activity):
+            game = True
+            game_name = act.name
+            game_state = act.state
+            game_state = f" ({game_state})" if game_state else ''
+        if isinstance(act, discord.activity.Game):
+            game = True
+            game_name = act.name
+            game_state = act.state
+            game_state = f" ({game_state})" if game_state else ''
+        if isinstance(act, discord.activity.Streaming):
+            stream = True
+            stream_name = act.twitch_name
+            stream_game = act.game
+            stream_url = act.url
+        if isinstance(act, discord.activity.CustomActivity):
+            print(act)
+    return (spot, game, stream, song, song_id, game_name, game_state,
+            stream_name, stream_game, stream_url)
 
 
 client.run(os.getenv('TOKEN'))
