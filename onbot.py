@@ -2,6 +2,8 @@
 import logging
 import os
 import string
+from logging import Formatter
+from logging.handlers import TimedRotatingFileHandler
 
 import discord
 from dotenv import load_dotenv
@@ -14,9 +16,9 @@ if not os.path.exists('logs'):
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-handler = logging.handlers.TimedRotatingFileHandler(
+handler = TimedRotatingFileHandler(
     filename='./logs/runtime.log', when='D', interval=1, backupCount=10, encoding='utf-8', delay=False)
-formatter = logging.Formatter(
+formatter = Formatter(
     fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
 
