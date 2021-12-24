@@ -2,7 +2,6 @@
 import logging
 import os
 import string
-from datetime import datetime
 
 import discord
 from dotenv import load_dotenv
@@ -13,9 +12,10 @@ if not os.path.exists('logs'):
     os.makedirs('logs')
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 handler = logging.handlers.TimedRotatingFileHandler(
-    filename='runtime.log', when='D', interval=1, backupCount=10, encoding='utf-8', delay=False)
+    filename='./logs/runtime.log', when='D', interval=1, backupCount=10, encoding='utf-8', delay=False)
 formatter = logging.Formatter(
     fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
