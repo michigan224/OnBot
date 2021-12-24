@@ -17,7 +17,8 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 handler = TimedRotatingFileHandler(
-    filename='./logs/runtime.log', when='D', interval=1, backupCount=10, encoding='utf-8', delay=False)
+    filename='./logs/runtime.log', when='D', interval=1, backupCount=10,
+    encoding='utf-8', delay=False)
 formatter = Formatter(
     fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
