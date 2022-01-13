@@ -74,7 +74,6 @@ async def whos_on(message):
             alone = False
             embed.add_field(
                 name=resp['name'], value=resp['value'], inline=resp['inline'])
-            continue
     if alone:
         embed.add_field(name='RIP',
                         value='Looks like no one is on. You\'re going to have to play alone.',
@@ -197,8 +196,6 @@ async def handle_activities(activities):
         if isinstance(act, discord.activity.Game):
             game = True
             game_name = act.name
-            game_state = act.state
-            game_state = f" ({game_state})" if game_state else ''
         if isinstance(act, discord.activity.Streaming):
             stream = True
             stream_name = act.twitch_name
