@@ -1,6 +1,7 @@
 """Personal discord bot."""
 import logging
 import os
+import random
 import string
 from logging import Formatter
 from logging.handlers import TimedRotatingFileHandler
@@ -55,6 +56,10 @@ async def on_message(message):
         logger.debug('Sent embed, deleting message')
         await message.delete()
         logger.debug('Deleted message')
+    elif 'roulette' in msg:
+        res = await roulette(message)
+        await message.channel.send(res)
+        await message.delete()
     elif 'geomap' in message.clean_content.lower():
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
         await message.delete()
@@ -83,6 +88,13 @@ async def whos_on(message):
                         value='Looks like no one is on. You\'re going to have to play alone.',
                         inline=False)
     return embed
+
+
+async def roulette(message):
+    """Handle roulette."""
+    games = ['F1 2021', 'Fortnite', 'Rainbow Six Siege',
+             'Rocket League', 'Sea of Thieves']
+    return random.choice(games)
 
 
 async def get_member_message(member):
