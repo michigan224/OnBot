@@ -41,7 +41,6 @@ async def on_ready():
 @client.event
 async def on_message(message):
     """Handle a message."""
-    logger.info("%s sent '%s'", message.author, message.content)
     if message.author == client.user:
         return
     msg = message.clean_content.lower().translate(
@@ -50,7 +49,12 @@ async def on_message(message):
     if ((('who' in msg or 'whos' in msg) and 'on' in msg)
             or 'whoson' in msg or 'whose on' in message.clean_content.lower()):
         logger.info("%s requested who's on", message.author)
-        await whos_on(message)
+        embed = await whos_on(message)
+        logger.debug('Sending embed')
+        await message.channel.send(embed=embed)
+        logger.debug('Sent embed, deleting message')
+        await message.delete()
+        logger.debug('Deleted message')
     elif 'geomap' in message.clean_content.lower():
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
         await message.delete()
@@ -78,12 +82,7 @@ async def whos_on(message):
         embed.add_field(name='RIP',
                         value='Looks like no one is on. You\'re going to have to play alone.',
                         inline=False)
-    logger.debug('Sending embed')
-    await message.channel.send(embed=embed)
-    logger.debug('Sent embed, deleting message')
-    await message.delete()
-    logger.debug('Deleted message')
-    return
+    return embed
 
 
 async def get_member_message(member):
@@ -202,7 +201,7 @@ async def handle_activities(activities):
             stream_game = act.game
             stream_url = act.url
         if isinstance(act, discord.activity.CustomActivity):
-            print(act)
+            logger.debug("Custom activity: %s", act)
     return (spot, game, stream, song, song_id, game_name, game_state,
             stream_name, stream_game, stream_url)
 
