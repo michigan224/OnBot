@@ -93,7 +93,8 @@ async def whos_on(message):
 async def roulette(message):
     """Handle roulette."""
     games = ['F1 2021', 'Fortnite', 'Rainbow Six Siege',
-             'Rocket League', 'Sea of Thieves', 'Minecraft', 'GTA V', 'Left 4 Dead']
+             'Rocket League', 'Sea of Thieves', 'Minecraft',
+             'GTA V', 'Left 4 Dead', 'Geoguessr', 'Sporcle']
     return random.choice(games)
 
 
