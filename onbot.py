@@ -94,7 +94,7 @@ async def roulette(message):
     """Handle roulette."""
     games = ['F1 2021', 'Fortnite', 'Rainbow Six Siege',
              'Rocket League', 'Sea of Thieves', 'Minecraft',
-             'GTA V', 'Left 4 Dead', 'Geoguessr', 'Sporcle']
+             'GTA V', 'Left 4 Dead', 'Geoguessr', 'Sporcle', 'CSGO']
     return random.choice(games)
 
 
