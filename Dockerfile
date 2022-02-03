@@ -1,7 +1,6 @@
 # syntax=docker/dockerfile:1
 
 FROM python:3.9-slim
-VOLUME /config
 RUN echo "**** install system packages ****" \
  && apt-get update \
  && apt-get upgrade -y --no-install-recommends \
@@ -14,4 +13,5 @@ RUN echo "**** install python packages ****" \
  && apt-get clean \
  && rm -rf /requirements.txt /tmp/* /var/tmp/* /var/lib/apt/lists/*
 COPY . /
+VOLUME /config
 ENTRYPOINT ["python3", "onbot.py"]

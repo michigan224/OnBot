@@ -7,6 +7,8 @@ from logging.handlers import TimedRotatingFileHandler
 
 import discord
 
+print(os.path.dirname(os.path.abspath(__file__)))
+print(os.path.abspath(os.getcwd()))
 if not os.path.exists('logs'):
     os.makedirs('logs')
 
