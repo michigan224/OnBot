@@ -54,7 +54,7 @@ async def on_message(message):
         await message.channel.send('https://www.geoguessr.com/maps/5dec7ee144d2a4a0f4feb636/play')
         await message.delete()
     if message.clean_content.lower() == '!ping':
-        await message.send('Pong! {0}'.format(round(client.latency, 1)))
+        await message.channel.send('Pong! {0}'.format(round(client.latency, 1)))
 
 
 async def whos_on(message):
