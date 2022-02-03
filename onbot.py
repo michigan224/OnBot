@@ -9,6 +9,10 @@ import discord
 
 print(os.path.dirname(os.path.abspath(__file__)))
 print(os.path.abspath(os.getcwd()))
+default_dir = os.path.join(os.path.dirname(
+    os.path.abspath(__file__)), "config")
+print(os.environ.get('config'))
+print(default_dir)
 if not os.path.exists('logs'):
     os.makedirs('logs')
 
