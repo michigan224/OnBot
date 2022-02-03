@@ -7,10 +7,6 @@ from logging.handlers import TimedRotatingFileHandler
 
 import discord
 
-default_dir = os.path.join(os.path.dirname(
-    os.path.abspath(__file__)), "config")
-print(default_dir)
-print(os.path.join(default_dir, 'logs', 'runtime.log'))
 if not os.path.exists(os.path.join('config', 'logs')):
     os.makedirs(os.path.join('config', 'logs'))
 
