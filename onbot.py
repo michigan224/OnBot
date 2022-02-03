@@ -6,9 +6,6 @@ from logging import Formatter
 from logging.handlers import TimedRotatingFileHandler
 
 import discord
-from dotenv import load_dotenv
-
-load_dotenv()
 
 if not os.path.exists('logs'):
     os.makedirs('logs')
@@ -207,4 +204,4 @@ async def handle_activities(activities):
             stream_name, stream_game, stream_url)
 
 
-client.run(os.getenv('TOKEN'))
+client.run(os.getenv('DISCORD_TOKEN'))
