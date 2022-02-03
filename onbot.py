@@ -7,12 +7,10 @@ from logging.handlers import TimedRotatingFileHandler
 
 import discord
 
-print(os.path.dirname(os.path.abspath(__file__)))
-print(os.path.abspath(os.getcwd()))
 default_dir = os.path.join(os.path.dirname(
     os.path.abspath(__file__)), "config")
-print(os.environ.get('config'))
 print(default_dir)
+print(os.path.join(default_dir, 'logs', 'runtime.log'))
 if not os.path.exists('logs'):
     os.makedirs('logs')
 
@@ -20,7 +18,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 handler = TimedRotatingFileHandler(
-    filename='./logs/runtime.log', when='D', interval=1, backupCount=10,
+    filename=os.path.join(default_dir, 'logs', 'runtime.log'), when='D', interval=1, backupCount=10,
     encoding='utf-8', delay=False)
 formatter = Formatter(
     fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
