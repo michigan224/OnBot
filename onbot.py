@@ -39,7 +39,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     """Handle a message."""
-    logging.debug(mem_top())
+    logger.debug(mem_top())
     logger.info("%s sent '%s'", message.author, message.content)
     if message.author == client.user:
         return
@@ -57,7 +57,7 @@ async def on_message(message):
 
 async def whos_on(message):
     """Send a message with the users that are on."""
-    logging.debug(mem_top())
+    logger.debug(mem_top())
     members = message.channel.members
     embed = discord.Embed(
         title="Who's on?",
@@ -88,7 +88,7 @@ async def whos_on(message):
 
 async def get_member_message(member):
     """Handle field for individual members."""
-    logging.debug(mem_top())
+    logger.debug(mem_top())
     member_name = member.nick if member.nick else member.name
     field = None
     if member.status == discord.Status.offline:
@@ -174,7 +174,7 @@ async def get_member_message(member):
 
 async def handle_activities(activities):
     """Handle activities."""
-    logging.debug(mem_top())
+    logger.debug(mem_top())
     spot = False
     game = False
     stream = False
