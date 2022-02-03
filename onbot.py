@@ -11,14 +11,14 @@ default_dir = os.path.join(os.path.dirname(
     os.path.abspath(__file__)), "config")
 print(default_dir)
 print(os.path.join(default_dir, 'logs', 'runtime.log'))
-if not os.path.exists('logs'):
-    os.makedirs('logs')
+if not os.path.exists(os.path.join('config', 'logs')):
+    os.makedirs(os.path.join('config', 'logs'))
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 handler = TimedRotatingFileHandler(
-    filename=os.path.join(default_dir, 'logs', 'runtime.log'), when='D', interval=1, backupCount=10,
+    filename=os.path.join('config', 'logs', 'runtime.log'), when='D', interval=1, backupCount=10,
     encoding='utf-8', delay=False)
 formatter = Formatter(
     fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
