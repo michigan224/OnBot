@@ -1,3 +1,4 @@
 discord==1.7.3
 requests==2.25.1
 datetime==4.3
+mem-top==0.1.6
