@@ -2,6 +2,7 @@
 import logging
 import os
 import string
+import sys
 from logging import Formatter
 from logging.handlers import TimedRotatingFileHandler
 
@@ -21,6 +22,7 @@ formatter = Formatter(
     fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
 
+logger.addHandler(logging.StreamHandler(sys.stdout))
 logger.addHandler(handler)
 
 intents = discord.Intents.all()
