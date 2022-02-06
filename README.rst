@@ -1,5 +1,9 @@
 OnBot
 =====
+
+.. image:: https://api.codacy.com/project/badge/Grade/304300fd026446618a2a6210d2836639
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/gh/michigan224/onbotpy?utm_source=github.com&utm_medium=referral&utm_content=michigan224/onbotpy&utm_campaign=Badge_Grade_Settings
 | I originally designed this bot to be a funny joke for my friends. Its purpose was to reduce the amount of times
   I would see the message 'who's on?' from someone. It does have that functionality now and will respond with a helpful,
   although slightly rude, message informing the asker who is on and what they are doing. Although the bots main purpose
